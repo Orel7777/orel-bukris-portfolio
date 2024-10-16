@@ -15,7 +15,7 @@ export function Card3D() {
           translateZ="50"
           className="text-xl font-bold text-neutral-600 dark:text-white"
         >
-          Orel Bukris Portfolio
+          Orel Bukris Portfolio Frontend
         </CardItem>
         <CardItem
           as="p"
