@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/utils/cn";
+import Image from "next/image";
 import React, {
   createContext,
   useState,
@@ -9,9 +10,10 @@ import React, {
   useEffect,
 } from "react";
 
-const MouseEnterContext = createContext<
-  [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
->(undefined);
+// הגדרת סוג מדויק עבור הקונטקסט במקום any
+type MouseEnterContextType = [boolean, React.Dispatch<React.SetStateAction<boolean>>];
+
+const MouseEnterContext = createContext<MouseEnterContextType | undefined>(undefined);
 
 export const CardContainer = ({
   children,
@@ -34,11 +36,12 @@ export const CardContainer = ({
     containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
   };
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
     setIsMouseEntered(true);
+    if (!containerRef.current) return;
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
     setIsMouseEntered(false);
     containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
@@ -120,9 +123,10 @@ export const CardItem = ({
   const ref = useRef<HTMLDivElement>(null);
   const [isMouseEntered] = useMouseEnter();
 
+  // הוספת התלות החסרה ב- handleAnimations
   useEffect(() => {
     handleAnimations();
-  }, [isMouseEntered, translateX, translateY, translateZ, rotateX, rotateY, rotateZ]);
+  }, [isMouseEntered]);
 
   const handleAnimations = () => {
     if (!ref.current) return;
@@ -144,8 +148,8 @@ export const CardItem = ({
   );
 };
 
-// Create a hook to use the context
-export const useMouseEnter = () => {
+// יצירת hook לשימוש בקונטקסט
+export const useMouseEnter = (): MouseEnterContextType => {
   const context = useContext(MouseEnterContext);
   if (context === undefined) {
     throw new Error("useMouseEnter must be used within a MouseEnterProvider");
