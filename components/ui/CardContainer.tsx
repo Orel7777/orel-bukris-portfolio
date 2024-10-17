@@ -10,9 +10,9 @@ import React, {
   useCallback,
 } from "react";
 
-const MouseEnterContext = createContext
-  [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
->(undefined);
+type MouseEnterContextType = [boolean, React.Dispatch<React.SetStateAction<boolean>>];
+
+const MouseEnterContext = createContext<MouseEnterContextType | null>(null);
 
 export const CardContainer = ({
   children,
@@ -148,9 +148,9 @@ export const CardItem = ({
   );
 };
 
-export const useMouseEnter = () => {
+export const useMouseEnter = (): MouseEnterContextType => {
   const context = useContext(MouseEnterContext);
-  if (context === undefined) {
+  if (context === null) {
     throw new Error("useMouseEnter must be used within a MouseEnterProvider");
   }
   return context;
