@@ -14,14 +14,15 @@ export function Card3D() {
             translateZ="50"
             className="text-xl font-bold text-white text-center"
           >
-            Orel Bukris Portfolio Frontend
+            Orel Bukris – Front-End Developer building modern, responsive websites.
+
           </CardItem>
           <CardItem
             as="p"
             translateZ="60"
             className="text-neutral-300 text-sm max-w-sm mt-2 text-center"
           >
-            Hover over this card to unleash the power of CSS perspective
+           Crafting sleek, user-friendly web experiences with the latest technologies.
           </CardItem>
           <CardItem translateZ="100" className="w-full mt-4 flex justify-center">
             <Image
