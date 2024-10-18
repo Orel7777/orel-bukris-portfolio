@@ -1,4 +1,5 @@
 import { Spotlight } from "./ui/Spotlight";
+import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 
 const Hero = () => {
   return (
@@ -35,7 +36,14 @@ const Hero = () => {
 
       <div className="flex justify-center relative my-20 z-10">
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center ">
-            <h1 className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">Orel Bukris portfolio</h1>
+            <h2 className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">Orel Bukris portfolio</h2>
+            <TextGenerateEffect
+            className="text-center text-[40px] md:text-5xl lg:test-6xl"
+            words="Transforming Concepts into Seamless User Experiences"
+            />
+            <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
+                Hi, I&apos;m Orel. I&apos;m a Front-End Developer.
+            </p>
         </div>
       </div>
     </div>
