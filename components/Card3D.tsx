@@ -4,14 +4,10 @@ import Image from "next/image";
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "./ui/CardContainer";
 import orelImg from "../public/orel_linkedin.png";
-import { Spotlight } from "./ui/Spotlight";
 
 export function Card3D() {
   return (
     <div className="flex justify-center items-center h-screen">
-      <div>
-        <Spotlight fill="purple" />
-      </div>
       <CardContainer className="inter-var">
         <CardBody className="relative group/card bg-transparent dark:bg-transparent border-none w-auto sm:w-[30rem] h-auto rounded-xl p-6 shadow-lg dark:shadow-none shadow-none flex flex-col items-center justify-center">
           <CardItem
