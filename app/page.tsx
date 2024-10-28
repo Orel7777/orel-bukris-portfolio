@@ -1,4 +1,5 @@
 import { Card3D } from "@/components/Card3D";
+import { ComparePic } from "@/components/ComparePic";
 import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
 
@@ -9,6 +10,7 @@ export default function Home() {
     items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
       <div className="max-w-7xl w-full">
         <Hero />
+        <ComparePic />
         <Card3D />
         <Grid />
       </div>
