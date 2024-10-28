@@ -110,7 +110,9 @@ const handleStart = useCallback(() => {
   );
 
   const handleMouseDown = useCallback(
-    (e: React.MouseEvent) => handleStart(e.clientX),
+    (e: React.MouseEvent) => {
+      handleStart(); 
+    },
     [handleStart]
   );
   const handleMouseUp = useCallback(() => handleEnd(), [handleEnd]);
@@ -122,7 +124,7 @@ const handleStart = useCallback(() => {
   const handleTouchStart = useCallback(
     (e: React.TouchEvent) => {
       if (!autoplay) {
-        handleStart(e.touches[0].clientX);
+        handleStart();
       }
     },
     [handleStart, autoplay]
