@@ -110,7 +110,7 @@ const handleStart = useCallback(() => {
   );
 
   const handleMouseDown = useCallback(
-    (e: React.MouseEvent) => {
+    () => {
       handleStart(); 
     },
     [handleStart]
@@ -122,7 +122,7 @@ const handleStart = useCallback(() => {
   );
 
   const handleTouchStart = useCallback(
-    (e: React.TouchEvent) => {
+    () => {
       if (!autoplay) {
         handleStart();
       }
