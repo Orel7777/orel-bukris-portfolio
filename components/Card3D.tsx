@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "./ui/CardContainer";
 import orelImg from "../public/orel_linkedin.png";
-
+// 
 export function Card3D() {
   return (
     <div className="flex justify-center items-center h-screen">
