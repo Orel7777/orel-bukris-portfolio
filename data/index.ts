@@ -81,22 +81,6 @@ export const navItems = [
     },    
     {
       id: 2,
-      title: "React Hooks Projects",
-      des: "React Hooks demos for state management.",
-      img: "/React_projects.png",
-      iconLists: ["/react.svg", "/hooks.svg"],
-      link: "https://projects-reacthooks.vercel.app/vodMovies?s=mario",
-    },
-    {
-      id: 3,
-      title: "React Hooks Projects",
-      des: "React Hooks demos for state management.",
-      img: "/hooks_projects.png",
-      iconLists: ["/react.svg", "/hooks.svg"],
-      link: "https://projects-reacthooks.vercel.app/vodMovies?s=mario",
-    },
-    {
-      id: 4,
       title: "The Great Outdoors",
       des: "Experience the beauty of nature through a captivating web platform showcasing stunning locations around the world. Built using React and TailwindCSS.",
       img: "/outdoors.png",
