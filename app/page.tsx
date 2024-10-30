@@ -2,6 +2,7 @@ import { Card3D } from "@/components/Card3D";
 import { ComparePic } from "@/components/ComparePic";
 import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
+import RecentProjects from "@/components/RecentProjects";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <ComparePic />
         <Card3D />
         <Grid />
+        <RecentProjects />
       </div>
     </main>
   );
