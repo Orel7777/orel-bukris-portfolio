@@ -1,5 +1,6 @@
 import { Card3D } from "@/components/Card3D";
 import { ComparePic } from "@/components/ComparePic";
+import Experience from "@/components/Experience";
 import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
 import RecentProjects from "@/components/RecentProjects";
@@ -15,6 +16,7 @@ export default function Home() {
         <Card3D />
         <Grid />
         <RecentProjects />
+        <Experience />
       </div>
     </main>
   );
