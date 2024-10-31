@@ -1,3 +1,4 @@
+import Approach from "@/components/Approach";
 import { Card3D } from "@/components/Card3D";
 import { ComparePic } from "@/components/ComparePic";
 import Experience from "@/components/Experience";
@@ -17,6 +18,7 @@ export default function Home() {
         <Grid />
         <RecentProjects />
         <Experience />
+        <Approach />
       </div>
     </main>
   );
