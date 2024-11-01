@@ -1,5 +1,5 @@
 
-export const navItems = [
+ export const navItems = [
     { name: "About", link: "#about" },
     { name: "Projects", link: "#projects" },
     { name: "Testimonials", link: "#testimonials" },
@@ -128,11 +128,12 @@ export const navItems = [
       img: "/git.svg",
     },
     {
-      id: 2,
-      img: "/twit.svg",
+      id:2 ,
+      img: "/whatsapp.svg",
     },
     {
       id: 3,
       img: "/link.svg",
     },
+   
   ];

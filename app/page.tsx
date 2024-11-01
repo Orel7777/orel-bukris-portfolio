@@ -2,6 +2,7 @@ import Approach from "@/components/Approach";
 import { Card3D } from "@/components/Card3D";
 import { ComparePic } from "@/components/ComparePic";
 import Experience from "@/components/Experience";
+import Footer from "@/components/Footer";
 import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
 import RecentProjects from "@/components/RecentProjects";
@@ -19,6 +20,7 @@ export default function Home() {
         <RecentProjects />
         <Experience />
         <Approach />
+        <Footer />
       </div>
     </main>
   );
