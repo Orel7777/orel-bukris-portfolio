@@ -4,7 +4,7 @@ import { MagicButton } from "./ui/MagicButton";
 
 const Footer = () => {
   return (
-    <footer className="w-full pb-10 mb-[100px]" id="contact">
+    <footer className="w-full pb-10 mb-[100px] md:mb-5" id="contact">
       <div className="flex flex-col items-center">
         <h1 className="heading lg:max-w-[45vw]">
           Are you prepared <span className="text-purple">to elevate</span> your digital presence to the next level?
