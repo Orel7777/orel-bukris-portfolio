@@ -83,8 +83,8 @@ const Footer: React.FC = () => {
 
     try {
       await emailjs.send(
-        "service_2h5mj0o",
-        "template_8k9jj1t",
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         {
           from_name: form.name,
           to_name: "Orel Bukris",
@@ -92,7 +92,7 @@ const Footer: React.FC = () => {
           to_email: "orelbukris7777@gmail.com",
           message: form.message,
         },
-        "8uBSQGeb-ADmsplz1"
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       );
 
       setLoading(false);
@@ -103,7 +103,7 @@ const Footer: React.FC = () => {
       console.error(error);
       alert("Something went wrong. Please try again.");
     }
-  };
+};
 
   return (
     <footer
