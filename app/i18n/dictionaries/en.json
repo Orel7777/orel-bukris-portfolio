@@ -1,0 +1,81 @@
+{
+    "navigation": {
+      "home": "Home",
+      "projects": "Projects",
+      "experience": "Experience",
+      "contact": "Contact"
+    },
+    "hero": {
+      "title": "3D Development that combines innovative design with interactive, living, and Breathing Experiences",
+      "subtitle": "Orel Bukris | Creating Modern Web Experiences",
+      "description": "Hi, I'm Orel, an expert in developing 3D websites optimized for all screen types",
+       "button": "Discover More"
+    },
+    "card": {
+      "title":"Orel Bukris - Crafting 3D Web Experiences with Innovation and Cutting-Edge Design",
+      "subtitle":"Specializing in creating digital solutions for businesses with modern, responsive websites and unique, creative, unforgettable user experiences",
+      "description":""
+    },
+    "grid": {
+      "picture":"Effective Teamwork",
+      "world":"I'm very flexible with timezones",
+      "language":"My tech stack",
+     "language2":"I continually seek to improve",
+     "tech":"Technology enthusiast passionate about development",
+     "tech2":"Currently developing a JS animation library for 3D environments",
+     "email":"Let's start a project together",
+     "email2":"Copy my email address",
+     "email3":"Email is Copied!"
+    },
+    "projects": {
+      "title": "A small selection of ",
+      "viewProject": "recent projects",
+      "nameProject": "Empower Your Fitness",
+      "nameProject2": "The Great Outdoors",
+      "description1": "Discover a modern fitness platform designed to motivate and guide users through their fitness journey. Built using React, TypeScript, and TailwindCSS",
+      "check":"Check Live Site"
+
+    },
+    "experience": {
+      "headerTitle": "My",
+      "headerTitle1": "Work Experience",
+      "title": "Full Stack Development Projects",
+      "description": "Developed projects with modern web technologies, focusing on interactive, responsive, and scalable MERN applications",
+      "title1": "Mobile App Development",
+      "description1": "Developed cross-platform apps with React Native, emphasizing intuitive interfaces, API integration, and state management",
+      "title2": "Frontend Development Specialist",
+      "description2": "Specialized in developing advanced user experiences using React and Next.js. Implemented responsive designs and performance optimizations. Created dynamic and interactive web interfaces with modern UI/UX principles",
+      "title3": "Backend Development",
+      "description3": "Developed servers and managed databases, creating secure APIs with Node.js and Express, using SQL and MongoDB"
+    },
+    "approach": {
+      "headerTitle":"My",
+      "headerTitle1":"Approach",
+      "Phase1title":"Preparation & Planning",
+      "Phase1text":"We'll work together to define your website's objectives, target audience, and main features. We'll review the site structure, navigation, and content requirements to meet your needs",
+      "Phase2title":"Development & Updates",
+      "Phase2text":"After finalizing the plan, I get started on the coding process. From initial drafts to refined code, I’ll keep you informed at each stage of progress",
+      "Phase3title":"Build & Launch",
+      "Phase3text":"This is where everything comes to life! Using the approved design, I’ll develop your website from scratch, turning ideas into a fully functional site",
+      "Phase1":"Phase 1",
+      "Phase2":"Phase 2",
+      "Phase3":"Phase 3"
+    },
+    "footer": {
+      "headerTitle": "Are you prepared",
+      "headerTitle1": "to elevate",
+      "headerTitle2": "your digital presence to the next level ?",
+      "headerDescription": "Contact me today, and let's explore how I can support you in reaching your goals",
+       "contact":"Full Name :", 
+       "contact1":"Email :", 
+       "contact2":"Your message :",
+       "placeholder":"John Doe",
+       "placeholder1":"johndoe@example.com",
+       "placeholder2":"Hi there, I am interested in ...",
+       "button":"Send Message",
+       "button1":"Sending...",
+       "end":"Orel Bukris | Expert in Developing Interactive 3D Websites and Applications"
+    }
+  }
+
+  

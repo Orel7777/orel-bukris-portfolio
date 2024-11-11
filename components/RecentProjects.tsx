@@ -1,22 +1,47 @@
 "use client";
-import { projects } from "@/data";
+// import { projects } from "@/data";
 import React, { useEffect, useState } from "react";
 import { PinContainer } from "./ui/3d-pin";
 import { FaLocationArrow } from "react-icons/fa";
+import { useLanguage } from "@/app/providers/language-provider";
+
+
+
+
+
 
 const RecentProjects = () => {
-  // Add state to handle client-side rendering
+  
   const [isClient, setIsClient] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
+  const projects = [
+    {
+      id: 1,
+      title: t("projects.nameProject"),
+      des: t("projects.description1"),
+      img: "/fitness.png",
+      iconLists: ["/re.svg", "/tail.svg", "/ts.svg"],
+      link: "https://empower-your-fitness-nvlf.vercel.app/"
+    },    
+    {
+      id: 2,
+      title: t("projects.nameProject2"),
+      des:  t("projects.description1"),
+      img: "/outdoors.png",
+      iconLists: ["/re.svg", "/tail.svg"],
+      link: "https://outdoor-exploration-ten.vercel.app/",
+    },
+  ];
   return (
     <div className="py-20" id="projects">
       <h1 className="heading">
-        A small selection of{" "}
-        <span className="text-purple">recent projects</span>
+      {t("projects.title")}{" "}
+        <span className="text-purple">{t("projects.viewProject")}</span>
       </h1>
       <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
         {isClient && projects.map((item) => (
@@ -77,7 +102,7 @@ const RecentProjects = () => {
 
                 <div className="flex justify-center items-center">
                   <p className="flex lg:text-xl md:text-xs text-sm text-purple">
-                    Check Live Site
+                    {t("projects.check")}
                   </p>
                   <FaLocationArrow className="ms-3" color="#CBACF9" />
                 </div>

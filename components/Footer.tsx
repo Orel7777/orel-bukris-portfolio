@@ -4,7 +4,7 @@ import { FaLocationArrow } from "react-icons/fa6";
 import { socialMedia } from "@/data";
 import emailjs from "@emailjs/browser";
 import { MagicButton } from "./ui/MagicButton";
-
+import { useLanguage } from "@/app/providers/language-provider";
 interface FormData {
   name: string;
   email: string;
@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [form, setForm] = useState<FormData>(initialState);
   const [errors, setErrors] = useState<FormErrors>({});
-
+  const { t } = useLanguage();
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
     let isValid = true;
@@ -116,12 +116,11 @@ const Footer: React.FC = () => {
 
       <div className="relative z-10 flex flex-col items-center">
         <h1 className="heading lg:max-w-[45vw]">
-          Are you prepared <span className="text-purple">to elevate</span>{" "}
-          your digital presence to the next level?
+        {t("footer.headerTitle")} <span className="text-purple">{t("footer.headerTitle1")}</span>{" "}
+        {t("footer.headerTitle2")}
         </h1>
         <p className="text-white-200 md:mt-10 my-5 text-center">
-          Contact me today, and let&apos;s explore how I can support you in
-          reaching your goals.
+        {t("footer.headerDescription")}
         </p>
 
         <form
@@ -129,7 +128,7 @@ const Footer: React.FC = () => {
           onSubmit={handleSubmit}
           className="mt-12 flex flex-col space-y-7 w-full max-w-lg backdrop-blur-lg bg-white/5 p-8 rounded-2xl border border-white/10">
           <label className="space-y-3">
-            <span className="text-white/80 font-medium">Full Name</span>
+            <span className="text-white/80 font-medium">{t("footer.contact")}</span>
             <input
               type="text"
               name="name"
@@ -138,7 +137,7 @@ const Footer: React.FC = () => {
               className={`w-full px-4 py-3 rounded-lg bg-black/20 border ${
                 errors.name ? 'border-red-500' : 'border-white/10'
               } text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all`}
-              placeholder="John Doe"
+              placeholder={t("footer.placeholder")}
             />
             {errors.name && (
               <span className="text-red-500 text-sm">{errors.name}</span>
@@ -146,7 +145,7 @@ const Footer: React.FC = () => {
           </label>
 
           <label className="space-y-3">
-            <span className="text-white/80 font-medium">Email</span>
+            <span className="text-white/80 font-medium">{t("footer.contact1")}</span>
             <input
               type="email"
               name="email"
@@ -155,7 +154,7 @@ const Footer: React.FC = () => {
               className={`w-full px-4 py-3 rounded-lg bg-black/20 border ${
                 errors.email ? 'border-red-500' : 'border-white/10'
               } text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all`}
-              placeholder="johndoe@example.com"
+              placeholder={t("footer.placeholder1")}
             />
             {errors.email && (
               <span className="text-red-500 text-sm">{errors.email}</span>
@@ -163,7 +162,7 @@ const Footer: React.FC = () => {
           </label>
 
           <label className="space-y-3">
-            <span className="text-white/80 font-medium">Your message</span>
+            <span className="text-white/80 font-medium">{t("footer.contact2")}</span>
             <textarea
               name="message"
               value={form.message}
@@ -172,7 +171,7 @@ const Footer: React.FC = () => {
               className={`w-full px-4 py-3 rounded-lg bg-black/20 border ${
                 errors.message ? 'border-red-500' : 'border-white/10'
               } text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none`}
-              placeholder="Hi there, I am interested in ..."
+              placeholder={t("footer.placeholder2")}
             />
             {errors.message && (
               <span className="text-red-500 text-sm">{errors.message}</span>
@@ -180,7 +179,7 @@ const Footer: React.FC = () => {
           </label>
           <div className="flex items-center justify-center">
             <MagicButton
-              title={loading ? "Sending..." : "Send Message"}
+              title={loading ? t("footer.button1") : t("footer.button")}
               icon={!loading ? <FaLocationArrow /> : null}
               position="center"
               handleClick={handleSubmit}
@@ -192,7 +191,7 @@ const Footer: React.FC = () => {
 
       <div className="relative z-10 flex mt-16 md:flex-row flex-col justify-between items-center px-4">
         <p className="md:text-base text-sm text-white/80 font-light">
-          Orel Bukris | Front-End Developer
+          {t("footer.end")}
         </p>
 
         <div className="flex items-center md:gap-4 gap-6">

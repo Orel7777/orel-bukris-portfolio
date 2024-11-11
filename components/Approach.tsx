@@ -2,28 +2,29 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
-
+import { useLanguage } from "@/app/providers/language-provider";
 const Approach = () => {
+  const {t} = useLanguage();
   return (
     <section className="w-full py-20">
       <h1 className="heading">
-        My <span className="text-purple">approach</span>
+      {t("approach.headerTitle")} <span className="text-purple">{t("approach.headerTitle1")}</span>
       </h1>
 
       <div className="my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
         <Card
-          title="Preparation & Planning"
-          icon={<AceternityIcon order="Phase 1" />}
-          des="We'll work together to define your website's objectives, target audience, and main features. We'll review the site structure, navigation, and content requirements to meet your needs.">
+          title={t("approach.Phase1title")}
+          icon={<AceternityIcon order={t("approach.Phase1")} />}
+          des={t("approach.Phase1text")}>
           <CanvasRevealEffect
             animationSpeed={5.1}
             containerClassName="bg-emerald-900 rounded-3xl overflow-hidden"
           />
         </Card>
         <Card
-          title="Development & Updates"
-          icon={<AceternityIcon order="Phase 2" />}
-          des="After finalizing the plan, I get started on the coding process. From initial drafts to refined code, I’ll keep you informed at each stage of progress.">
+          title={t("approach.Phase2title")}
+          icon={<AceternityIcon order={t("approach.Phase2")}/>}
+          des={t("approach.Phase2text")}>
           <CanvasRevealEffect
             animationSpeed={3}
             containerClassName="bg-pink-900 rounded-3xl overflow-hidden"
@@ -35,9 +36,9 @@ const Approach = () => {
           />
         </Card>
         <Card
-          title="Build & Launch"
-          icon={<AceternityIcon order="Phase 3" />}
-          des="This is where everything comes to life! Using the approved design, I’ll develop your website from scratch, turning ideas into a fully functional site.">
+          title={t("approach.Phase3title")}
+          icon={<AceternityIcon order={t("approach.Phase3")} />}
+          des={t("approach.Phase3text")}>
           <CanvasRevealEffect
             animationSpeed={3}
             containerClassName="bg-sky-700 rounded-3xl overflow-hidden"
