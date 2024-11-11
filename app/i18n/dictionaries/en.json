@@ -29,7 +29,7 @@
     },
     "projects": {
       "title": "A small selection of ",
-      "viewProject": "recent projects",
+      "viewProject": "Recent Projects",
       "nameProject": "Empower Your Fitness",
       "nameProject2": "The Great Outdoors",
       "description1": "Discover a modern fitness platform designed to motivate and guide users through their fitness journey. Built using React, TypeScript, and TailwindCSS",
