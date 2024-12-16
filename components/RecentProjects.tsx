@@ -56,8 +56,8 @@ const RecentProjects = () => {
     },
     {
       id: 6,
-      title: t("projects.nameProject5"),
-      des: t("projects.description5"),
+      title: t("projects.nameProject6"),
+      des: t("projects.description6"),
       img: "/T-shirt.png",
       iconLists: ["/re.svg", "/tail.svg"],
       link: "https://shirt-craft-3-d.vercel.app/",
