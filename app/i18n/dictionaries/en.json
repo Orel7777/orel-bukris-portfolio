@@ -34,10 +34,14 @@
     "nameProject2": "The Great Outdoors",
     "nameProject3": "3D Island - An Interactive Experience",
     "nameProject4": "Interactive 3D Project",
+    "nameProject5": "Apple Website Replica",
+    "nameProject6": "ShirtCraft 3D",
     "description1": "Discover a modern fitness platform designed to motivate and guide users through their fitness journey. Built using React, TypeScript, and TailwindCSS",
     "description2": "Experience the beauty of nature through a captivating web platform showcasing stunning locations around the world. Built using React and TailwindCSS",
     "description3": "The website showcases a stunning 3D experience with interactive and dynamic design. This project reflects creativity and the use of advanced technologies like React and TailwindCSS, emphasizing modern design and immersive visuals",
     "description4": "A website showcasing an interactive 3D design experience with dynamic elements and innovative animations. Built using advanced technologies like React and Three.js.",
+    "description5": "A responsive Apple website clone showcasing a clean design, animations, and Tailwind CSS integration",
+    "description6": "An interactive 3D t-shirt customization app built with React and Three.js, allowing users to design shirts in real-time with ease.",
     "check": "Check Live Site"
   },
   "experience": {

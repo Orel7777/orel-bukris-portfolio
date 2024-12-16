@@ -46,6 +46,22 @@ const RecentProjects = () => {
       iconLists: ["/re.svg", "/tail.svg"],
       link: "https://3-d-example1-orel-bukris.vercel.app/",
     },
+    {
+      id: 5,
+      title: t("projects.nameProject5"),
+      des: t("projects.description5"),
+      img: "/iphone.png",
+      iconLists: ["/re.svg", "/tail.svg"],
+      link: "https://apple-website-example-beryl.vercel.app/",
+    },
+    {
+      id: 6,
+      title: t("projects.nameProject5"),
+      des: t("projects.description5"),
+      img: "/T-shirt.png",
+      iconLists: ["/re.svg", "/tail.svg"],
+      link: "https://shirt-craft-3-d.vercel.app/",
+    },
   ];
   return (
     <div className="py-20" id="projects">
