@@ -8,9 +8,10 @@ export const LanguageToggle = () => {
   return (
     <button
       onClick={toggleLanguage}
-      className="fixed top-4 right-4 bg-white/10 backdrop-blur-sm px-4 py-2 
+      className="fixed top-2 right-4 bg-white/10 backdrop-blur-sm px-4 py-2 
       rounded-full text-white hover:bg-white/20 transition-all z-50
-      dark:bg-black/10 dark:text-white dark:hover:bg-black/20"
+      dark:bg-black/10 dark:text-white dark:hover:bg-black/20
+      sm:top-4"
     >
       {language === 'en' ? 'עברית' : 'English'}
     </button>
