@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
 import ThreeGlobe from "three-globe";
 import { useThree, Object3DNode, Canvas, extend } from "@react-three/fiber";
@@ -25,6 +25,24 @@ type Position = {
   endLng: number;
   arcAlt: number;
   color: string;
+};
+
+type PointData = {
+  size: number;
+  order: number;
+  color: (t: number) => string;
+  lat: number;
+  lng: number;
+};
+
+type ArcData = {
+  startLat: number;
+  startLng: number;
+  endLat: number;
+  endLng: number;
+  color: string;
+  arcAlt: number;
+  order: number;
 };
 
 export type GlobeConfig = {
@@ -72,17 +90,7 @@ function hexToRgb(hex: string) {
 }
 
 export function Globe({ globeConfig, data }: WorldProps) {
-  const [globeData, setGlobeData] = useState<
-    | {
-        size: number;
-        order: number;
-        color: (t: number) => string;
-        lat: number;
-        lng: number;
-      }[]
-    | null
-  >(null);
-
+  const [globeData, setGlobeData] = useState<PointData[] | null>(null);
   const globeRef = useRef<ThreeGlobe | null>(null);
 
   const defaultProps = {
@@ -102,14 +110,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     ...globeConfig,
   };
 
-  useEffect(() => {
-    if (globeRef.current) {
-      _buildData();
-      _buildMaterial();
-    }
-  }, [globeRef.current]);
-
-  const _buildMaterial = () => {
+  const _buildMaterial = useCallback(() => {
     if (!globeRef.current) return;
 
     const globeMaterial = globeRef.current.globeMaterial() as unknown as {
@@ -122,16 +123,16 @@ export function Globe({ globeConfig, data }: WorldProps) {
     globeMaterial.emissive = new Color(globeConfig.emissive);
     globeMaterial.emissiveIntensity = globeConfig.emissiveIntensity || 0.1;
     globeMaterial.shininess = globeConfig.shininess || 0.9;
-  };
+  }, [globeConfig]);
 
-  const _buildData = () => {
+  const _buildData = useCallback(() => {
     if (!globeRef.current) return;
 
-    const points = data.reduce((acc: any[], arc) => {
+    const points = data.reduce((acc: PointData[], arc: Position) => {
       const rgb = hexToRgb(arc.color);
       if (!rgb) return acc;
 
-      const startPoint = {
+      const startPoint: PointData = {
         size: defaultProps.pointSize,
         order: arc.order,
         color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
@@ -139,7 +140,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
         lng: arc.startLng,
       };
 
-      const endPoint = {
+      const endPoint: PointData = {
         size: defaultProps.pointSize,
         order: arc.order,
         color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
@@ -174,30 +175,37 @@ export function Globe({ globeConfig, data }: WorldProps) {
     // הגדרת הקשתות
     globeRef.current
       .arcsData(data)
-      .arcStartLat((d: any) => d.startLat)
-      .arcStartLng((d: any) => d.startLng)
-      .arcEndLat((d: any) => d.endLat)
-      .arcEndLng((d: any) => d.endLng)
-      .arcColor((e: any) => e.color)
-      .arcAltitude((e: any) => e.arcAlt)
+      .arcStartLat((d: object) => (d as ArcData).startLat)
+      .arcStartLng((d: object) => (d as ArcData).startLng)
+      .arcEndLat((d: object) => (d as ArcData).endLat)
+      .arcEndLng((d: object) => (d as ArcData).endLng)
+      .arcColor((d: object) => (d as ArcData).color)
+      .arcAltitude((d: object) => (d as ArcData).arcAlt)
       .arcStroke(() => 0.3)
       .arcDashLength(defaultProps.arcLength)
       .arcDashGap(15)
-      .arcDashInitialGap((e: any) => e.order)
+      .arcDashInitialGap((d: object) => (d as ArcData).order)
       .arcDashAnimateTime(() => defaultProps.arcTime);
 
     // הגדרת הנקודות
     globeRef.current
       .pointsData(filteredPoints)
-      .pointColor((e: any) => e.color(0))
+      .pointColor((d: object) => (d as PointData).color(0))
       .pointsMerge(true)
       .pointAltitude(0.0)
       .pointRadius(2);
-  };
+  }, [data, defaultProps]);
+
+  useEffect(() => {
+    if (globeRef.current) {
+      _buildData();
+      _buildMaterial();
+    }
+  }, [globeRef.current, _buildData, _buildMaterial]);
 
   useEffect(() => {
     if (!globeRef.current || !globeData) return;
-
+    
     const interval = setInterval(() => {
       if (!globeRef.current || !globeData) return;
       
@@ -214,7 +222,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     return () => {
       clearInterval(interval);
     };
-  }, [globeRef.current, globeData, data.length]);
+  }, [globeData, data.length]);
 
   return <threeGlobe ref={globeRef} />;
 }
