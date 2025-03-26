@@ -28,13 +28,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "he_IL",
-    url: "https://orel-bukris-portfolio.vercel.app",
+    url: "https://www.orelweb.co.il",
     title: "אוראל בוקריס | מפתח אתרים מומחה בפיתוח תלת-מימד",
     description: "אוראל בוקריס - מפתח אתרים מומחה בפיתוח אתרים תלת-מימדיים, חוויות אינטראקטיביות ופתרונות דיגיטליים מתקדמים.",
     siteName: "Orel Bukris Portfolio",
     images: [
       {
-        url: "/orel_linkedin.png",
+        url: "https://www.orelweb.co.il/orel_linkedin.png",
         width: 1200,
         height: 630,
         alt: "Orel Bukris - Web Developer",
@@ -45,10 +45,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "אוראל בוקריס | מפתח אתרים מומחה בפיתוח תלת-מימד",
     description: "אוראל בוקריס - מפתח אתרים מומחה בפיתוח אתרים תלת-מימדיים, חוויות אינטראקטיביות ופתרונות דיגיטליים מתקדמים.",
-    images: ["/orel_linkedin.png"],
+    images: ["https://www.orelweb.co.il/orel_linkedin.png"],
   },
   alternates: {
-    canonical: "https://orel-bukris-portfolio.vercel.app",
+    canonical: "https://www.orelweb.co.il",
   },
 };
 
