@@ -18,8 +18,38 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Orel Bukris Portfolio",
-  description: "Explore Orel Bukris' portfolio, featuring full-stack and front-end projects built with React, Node.js, Next.js, and more. Showcasing innovative solutions and dynamic web applications.",
+  title: "אוראל בוקריס | מפתח אתרים מומחה בפיתוח תלת-מימד",
+  description: "אוראל בוקריס - מפתח אתרים מומחה בפיתוח אתרים תלת-מימדיים, חוויות אינטראקטיביות ופתרונות דיגיטליים מתקדמים. מומחה ב-React, Next.js, Three.js וטכנולוגיות web מודרניות.",
+  keywords: "מפתח אתרים, בונה אתרים, פיתוח אתרים, פיתוח תלת-מימד, React, Next.js, Three.js, פיתוח frontend, פיתוח fullstack, חוויות אינטראקטיביות, אתרים מודרניים",
+  authors: [{ name: "Orel Bukris" }],
+  creator: "Orel Bukris",
+  publisher: "Orel Bukris",
+  robots: "index, follow",
+  openGraph: {
+    type: "website",
+    locale: "he_IL",
+    url: "https://orel-bukris-portfolio.vercel.app",
+    title: "אוראל בוקריס | מפתח אתרים מומחה בפיתוח תלת-מימד",
+    description: "אוראל בוקריס - מפתח אתרים מומחה בפיתוח אתרים תלת-מימדיים, חוויות אינטראקטיביות ופתרונות דיגיטליים מתקדמים.",
+    siteName: "Orel Bukris Portfolio",
+    images: [
+      {
+        url: "/orel_linkedin.png",
+        width: 1200,
+        height: 630,
+        alt: "Orel Bukris - Web Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "אוראל בוקריס | מפתח אתרים מומחה בפיתוח תלת-מימד",
+    description: "אוראל בוקריס - מפתח אתרים מומחה בפיתוח אתרים תלת-מימדיים, חוויות אינטראקטיביות ופתרונות דיגיטליים מתקדמים.",
+    images: ["/orel_linkedin.png"],
+  },
+  alternates: {
+    canonical: "https://orel-bukris-portfolio.vercel.app",
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="he" dir="rtl">
       <head>
         <link rel="icon" href="/OB_logo.jpg" sizes="any" />
       </head>
