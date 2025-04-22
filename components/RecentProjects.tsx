@@ -115,87 +115,99 @@ const RecentProjects = () => {
   };
 
   return (
-    <div className="py-20" id="projects">
-      <h1 className="heading">
+    <div className="py-20 px-4 md:px-8 lg:px-16" id="projects">
+      <h1 className="heading text-center mb-14">
         {t("projects.title")}{" "}
         <span className="text-purple">{t("projects.viewProject")}</span>
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 p-4 mt-10 justify-items-center max-w-[1400px] mx-auto">
+      
+      <div className="flex flex-wrap justify-center gap-24 md:gap-20 lg:gap-24 max-w-[1600px] mx-auto">
         {isClient &&
           projects.map((item) => {
             if (item.requireFemaleVerification) {
               return (
                 <div
-                  className="h-[25rem] lg:h-[32.5rem] w-full max-w-[400px]"
-                  key={item.id}>
+                  className="project-card w-full md:w-[450px] lg:w-[500px] h-[540px] perspective"
+                  key={item.id}
+                >
                   <a 
                     href="#" 
                     onClick={(e) => handleProjectClick(e, item)}
-                    className="relative group/pin z-50 cursor-pointer block w-full h-full"
+                    className="relative group block w-full h-full transform-gpu transition-all duration-700 preserve-3d hover:rotate-y-12"
                   >
-                    <PinContainer title={item.title}>
-                      <div className="relative flex items-center justify-center w-full overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
-                        <div
-                          className="relative w-full h-full overflow-hidden rounded-xl lg:rounded-3xl"
-                          style={{ backgroundColor: "#13162D" }}>
+                    <div className="absolute inset-0 backface-hidden rounded-2xl bg-[#13162D] shadow-custom overflow-hidden border border-purple/20 z-10">
+                      <div className="flex flex-col h-full">
+                        <div className="relative w-full h-[250px] overflow-hidden">
                           <Image
                             src="/bg.png"
-                            alt="bgimg"
-                            className="w-full h-full object-cover"
-                            width={400}
-                            height={300}
+                            alt="background"
+                            className="absolute inset-0 w-full h-full object-cover opacity-40"
+                            width={500}
+                            height={250}
+                          />
+                          <Image
+                            src={item.img}
+                            alt={`${item.title} cover`}
+                            className="absolute inset-0 w-full h-full object-contain object-center p-4 group-hover:scale-105 transition-transform duration-700"
+                            width={500}
+                            height={250}
                           />
                         </div>
-                        <Image
-                          src={item.img}
-                          alt={`${item.title} cover`}
-                          className="z-10 w-auto h-auto object-cover rounded-lg rounded md:rounded-lg sm:rounded-xl"
-                          width={400}
-                          height={300}
-                        />
-                      </div>
-
-                      <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 text-white">
-                        {item.title}
-                      </h1>
-
-                      <p
-                        className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
-                        style={{
-                          color: "#BEC1DD",
-                          margin: "1vh 0",
-                        }}>
-                        {item.des}
-                      </p>
-
-                      <div className="flex items-center justify-between mt-7 mb-3">
-                        <div className="flex items-center">
-                          {item.iconLists.map((icon, index) => (
-                            <div
-                              key={index}
-                              className="border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
-                              style={{
-                                transform: `translateX(-${5 * index + 2}px)`,
-                              }}>
-                              <Image
-                                src={icon}
-                                alt={`technology-${index + 1}`}
-                                className="p-2"
-                                width={40}
-                                height={40}
+                        
+                        <div className="p-6 flex-grow flex flex-col">
+                          <h2 className="text-2xl font-bold text-white mb-2 group-hover:text-purple transition-colors duration-300">
+                            {item.title}
+                          </h2>
+                          
+                          <p className="text-[#BEC1DD] text-lg font-light mb-auto">
+                            {item.des}
+                          </p>
+                          
+                          <div className="flex items-center justify-between mt-8">
+                            <div className="flex items-center">
+                              {item.iconLists.map((icon, index) => (
+                                <div
+                                  key={index}
+                                  className="border border-white/20 rounded-full bg-black/40 backdrop-blur-sm w-10 h-10 flex justify-center items-center -mr-2 group-hover:translate-y-[-5px] transition-transform duration-300"
+                                  style={{
+                                    transitionDelay: `${index * 50}ms`,
+                                  }}
+                                >
+                                  <Image
+                                    src={icon}
+                                    alt={`technology-${index + 1}`}
+                                    className="p-2"
+                                    width={40}
+                                    height={40}
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                            
+                            <div className="flex items-center bg-black/20 backdrop-blur-sm px-3 py-2 rounded-full group-hover:bg-purple/20 transition-all duration-300">
+                              <p className="text-white mr-2 text-sm font-medium">
+                                {t("projects.checkFemale")}
+                              </p>
+                              <FaLocationArrow 
+                                className="group-hover:translate-x-1 transition-transform duration-300" 
+                                color="#CBACF9" 
+                                size={14}
                               />
                             </div>
-                          ))}
-                        </div>
-
-                        <div className="flex justify-center items-center">
-                          <p className="flex lg:text-xl md:text-xs text-sm text-purple">
-                            {t("projects.checkFemale")}
-                          </p>
-                          <FaLocationArrow className="ms-3" color="#CBACF9" />
+                          </div>
                         </div>
                       </div>
-                    </PinContainer>
+                    </div>
+                    
+                    <div className="absolute inset-0 backface-hidden rounded-2xl bg-gradient-to-b from-purple/10 to-[#13162D] rotate-y-180 border border-purple/30 flex items-center justify-center p-8">
+                      <div className="text-center">
+                        <h3 className="text-xl text-white font-bold mb-4">{item.title}</h3>
+                        <p className="text-[#BEC1DD] mb-6">{item.des}</p>
+                        <div className="inline-block bg-purple/20 backdrop-blur-sm px-4 py-2 rounded-full text-white font-medium">
+                          {t("projects.checkFemale")}
+                        </div>
+                      </div>
+                    </div>
                   </a>
                 </div>
               );
@@ -203,71 +215,89 @@ const RecentProjects = () => {
             
             return (
               <div
-                className="h-[25rem] lg:h-[32.5rem] w-full max-w-[400px]"
-                key={item.id}>
-                <PinContainer title={item.title} href={item.link}>
-                  <div className="relative flex items-center justify-center w-full overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
-                    <div
-                      className="relative w-full h-full overflow-hidden rounded-xl lg:rounded-3xl"
-                      style={{ backgroundColor: "#13162D" }}>
-                      <Image
-                        src="/bg.png"
-                        alt="bgimg"
-                        className="w-full h-full object-cover"
-                        width={400}
-                        height={300}
-                      />
-                    </div>
-                    <Image
-                      src={item.img}
-                      alt={`${item.title} cover`}
-                      className="z-10 w-auto h-auto object-cover rounded-lg rounded md:rounded-lg sm:rounded-xl"
-                      width={400}
-                      height={300}
-                    />
-                  </div>
-
-                  <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 text-white">
-                    {item.title}
-                  </h1>
-
-                  <p
-                    className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
-                    style={{
-                      color: "#BEC1DD",
-                      margin: "1vh 0",
-                    }}>
-                    {item.des}
-                  </p>
-
-                  <div className="flex items-center justify-between mt-7 mb-3">
-                    <div className="flex items-center">
-                      {item.iconLists.map((icon, index) => (
-                        <div
-                          key={index}
-                          className="border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
-                          style={{
-                            transform: `translateX(-${5 * index + 2}px)`,
-                          }}>
-                          <Image
-                            src={icon}
-                            alt={`technology-${index + 1}`}
-                            className="p-2"
-                            width={40}
-                            height={40}
-                          />
+                className="project-card w-full md:w-[450px] lg:w-[500px] h-[540px] perspective"
+                key={item.id}
+              >
+                <a 
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative group block w-full h-full transform-gpu transition-all duration-700 preserve-3d hover:rotate-y-12"
+                >
+                  <div className="absolute inset-0 backface-hidden rounded-2xl bg-[#13162D] shadow-custom overflow-hidden border border-purple/20 z-10">
+                    <div className="flex flex-col h-full">
+                      <div className="relative w-full h-[250px] overflow-hidden">
+                        <Image
+                          src="/bg.png"
+                          alt="background"
+                          className="absolute inset-0 w-full h-full object-cover opacity-40"
+                          width={500}
+                          height={250}
+                        />
+                        <Image
+                          src={item.img}
+                          alt={`${item.title} cover`}
+                          className="absolute inset-0 w-full h-full object-contain object-center p-4 group-hover:scale-105 transition-transform duration-700"
+                          width={500}
+                          height={250}
+                        />
+                      </div>
+                      
+                      <div className="p-6 flex-grow flex flex-col">
+                        <h2 className="text-2xl font-bold text-white mb-2 group-hover:text-purple transition-colors duration-300">
+                          {item.title}
+                        </h2>
+                        
+                        <p className="text-[#BEC1DD] text-lg font-light mb-auto">
+                          {item.des}
+                        </p>
+                        
+                        <div className="flex items-center justify-between mt-8">
+                          <div className="flex items-center">
+                            {item.iconLists.map((icon, index) => (
+                              <div
+                                key={index}
+                                className="border border-white/20 rounded-full bg-black/40 backdrop-blur-sm w-10 h-10 flex justify-center items-center -mr-2 group-hover:translate-y-[-5px] transition-transform duration-300"
+                                style={{
+                                  transitionDelay: `${index * 50}ms`,
+                                }}
+                              >
+                                <Image
+                                  src={icon}
+                                  alt={`technology-${index + 1}`}
+                                  className="p-2"
+                                  width={40}
+                                  height={40}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                          
+                          <div className="flex items-center bg-black/20 backdrop-blur-sm px-3 py-2 rounded-full group-hover:bg-purple/20 transition-all duration-300">
+                            <p className="text-white mr-2 text-sm font-medium">
+                              {t("projects.check")}
+                            </p>
+                            <FaLocationArrow 
+                              className="group-hover:translate-x-1 transition-transform duration-300" 
+                              color="#CBACF9" 
+                              size={14}
+                            />
+                          </div>
                         </div>
-                      ))}
-                    </div>
-
-                    <div className="flex justify-center items-center">
-                      <p className="flex lg:text-xl md:text-xs text-sm text-purple">
-                        {t("projects.check")}
-                      </p>
-                      <FaLocationArrow className="ms-3" color="#CBACF9" />
+                      </div>
                     </div>
                   </div>
-                </PinContainer>
+                  
+                  <div className="absolute inset-0 backface-hidden rounded-2xl bg-gradient-to-b from-purple/10 to-[#13162D] rotate-y-180 border border-purple/30 flex items-center justify-center p-8">
+                    <div className="text-center">
+                      <h3 className="text-xl text-white font-bold mb-4">{item.title}</h3>
+                      <p className="text-[#BEC1DD] mb-6">{item.des}</p>
+                      <div className="inline-block bg-purple/20 backdrop-blur-sm px-4 py-2 rounded-full text-white font-medium">
+                        {t("projects.check")}
+                      </div>
+                    </div>
+                  </div>
+                </a>
               </div>
             );
           })}

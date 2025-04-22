@@ -86,4 +86,30 @@
   .black-gradient {
     background: linear-gradient(90deg, #161a31 0%, #06091f 100%);
   }
+
+  /* Project cards 3D effect */
+  .perspective {
+    perspective: 1500px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  .rotate-y-12:hover {
+    transform: rotateY(12deg);
+  }
+
+  .shadow-custom {
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 
+                0 20px 60px -10px rgba(102, 45, 145, 0.2);
+  }
 }
