@@ -18,7 +18,7 @@ const Overlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,11 +27,11 @@ const Overlay = styled.div`
 
 const StyledCard = styled.div`
   background-color: white;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 32rem;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 36rem;
   text-align: center;
   direction: rtl;
 `;
@@ -44,38 +44,41 @@ const CardHeader = styled.div`
 `;
 
 const CardImage = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 `;
 
 const CardContent = styled.div`
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
 `;
 
 const CardActions = styled.div`
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
 `;
 
 const Button = styled.button<{ primary?: boolean }>`
   display: inline-flex;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.125rem;
   line-height: 1.5rem;
   font-weight: 500;
   justify-content: center;
-  border-radius: 0.375rem;
-  border: 1px solid;
+  border-radius: 0.5rem;
+  border: 2px solid;
   cursor: pointer;
   transition: all 0.2s;
 
   ${props => props.primary ? `
     background-color: #dc2626;
     color: white;
-    border-color: transparent;
+    border-color: #dc2626;
     
     &:hover {
       background-color: #b91c1c;
+      border-color: #b91c1c;
     }
   ` : `
     background-color: white;
@@ -84,6 +87,7 @@ const Button = styled.button<{ primary?: boolean }>`
     
     &:hover {
       background-color: #f3f4f6;
+      border-color: #9ca3af;
     }
   `}
 `;
@@ -143,12 +147,12 @@ export const VerificationDialog: React.FC<VerificationDialogProps> = ({
               strokeWidth="1.5"
               viewBox="0 0 24 24"
               fill="none"
-              width={48}
-              height={48}
+              width={60}
+              height={60}
               style={{
                 color: "#dc2626",
                 backgroundColor: "#fee2e2",
-                padding: "0.75rem",
+                padding: "1rem",
                 borderRadius: "9999px",
               }}
             >
@@ -159,10 +163,17 @@ export const VerificationDialog: React.FC<VerificationDialogProps> = ({
               />
             </svg>
           </CardImage>
-          <h2 className="text-xl font-bold">{currentStep.title}</h2>
+          <h2 style={{ 
+            fontSize: '1.5rem', 
+            fontWeight: 'bold',
+            color: '#111827'
+          }}>{currentStep.title}</h2>
         </CardHeader>
         <CardContent>
-          <p>{currentStep.text}</p>
+          <p style={{ 
+            fontSize: '1.125rem',
+            color: '#4B5563'
+          }}>{currentStep.text}</p>
         </CardContent>
         <CardActions>
           <Button primary onClick={handleConfirmStep}>

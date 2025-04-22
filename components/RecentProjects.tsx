@@ -120,13 +120,13 @@ const RecentProjects = () => {
         {t("projects.title")}{" "}
         <span className="text-purple">{t("projects.viewProject")}</span>
       </h1>
-      <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 lg:gap-12 p-4 mt-10 justify-items-center">
         {isClient &&
           projects.map((item) => {
             if (item.requireFemaleVerification) {
               return (
                 <div
-                  className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
+                  className="h-[25rem] lg:h-[32.5rem] w-full max-w-[320px]"
                   key={item.id}>
                   <a 
                     href="#" 
@@ -134,7 +134,7 @@ const RecentProjects = () => {
                     className="relative group/pin z-50 cursor-pointer block w-full h-full"
                   >
                     <PinContainer title={item.title}>
-                      <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
+                      <div className="relative flex items-center justify-center w-full overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
                         <div
                           className="relative w-full h-full overflow-hidden rounded-xl lg:rounded-3xl"
                           style={{ backgroundColor: "#13162D" }}>
@@ -155,7 +155,7 @@ const RecentProjects = () => {
                         />
                       </div>
 
-                      <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
+                      <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 text-white">
                         {item.title}
                       </h1>
 
@@ -203,10 +203,10 @@ const RecentProjects = () => {
             
             return (
               <div
-                className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
+                className="h-[25rem] lg:h-[32.5rem] w-full max-w-[320px]"
                 key={item.id}>
                 <PinContainer title={item.title} href={item.link}>
-                  <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
+                  <div className="relative flex items-center justify-center w-full overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
                     <div
                       className="relative w-full h-full overflow-hidden rounded-xl lg:rounded-3xl"
                       style={{ backgroundColor: "#13162D" }}>
@@ -227,7 +227,7 @@ const RecentProjects = () => {
                     />
                   </div>
 
-                  <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
+                  <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 text-white">
                     {item.title}
                   </h1>
 
