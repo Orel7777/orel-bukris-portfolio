@@ -5,6 +5,16 @@ import { PinContainer } from "./ui/3d-pin";
 import { FaLocationArrow } from "react-icons/fa";
 import { useLanguage } from "@/app/providers/language-provider";
 
+interface ProjectItem {
+  id: number;
+  title: string;
+  des: string;
+  img: string;
+  iconLists: string[];
+  link: string;
+  requireFemaleVerification?: boolean;
+}
+
 const RecentProjects = () => {
   const [isClient, setIsClient] = useState(false);
   const { t } = useLanguage();
@@ -13,7 +23,7 @@ const RecentProjects = () => {
     setIsClient(true);
   }, []);
 
-  const projects = [
+  const projects: ProjectItem[] = [
     {
       id: 1,
       title: t("projects.nameProject8"),
@@ -81,7 +91,7 @@ const RecentProjects = () => {
     },
   ];
 
-  const handleProjectClick = (e, project) => {
+  const handleProjectClick = (e: React.MouseEvent, project: ProjectItem) => {
     if (project.requireFemaleVerification) {
       e.preventDefault();
       const isWoman = window.confirm(t("projects.femaleVerification1"));
@@ -102,73 +112,143 @@ const RecentProjects = () => {
       </h1>
       <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
         {isClient &&
-          projects.map((item) => (
-            <div
-              className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
-              key={item.id}>
-              <PinContainer 
-                title={item.title} 
-                href={item.link}
-                onClick={(e) => item.requireFemaleVerification ? handleProjectClick(e, item) : null}
-              >
-                <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
-                  <div
-                    className="relative w-full h-full overflow-hidden rounded-xl lg:rounded-3xl"
-                    style={{ backgroundColor: "#13162D" }}>
-                    <img
-                      src="/bg.png"
-                      alt="bgimg"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <img
-                    src={item.img}
-                    alt={`${item.title} cover`}
-                    className="z-10 w-auto h-auto object-cover rounded-lg rounded md:rounded-lg sm:rounded-xl"
-                  />
-                </div>
-
-                <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
-                  {item.title}
-                </h1>
-
-                <p
-                  className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
-                  style={{
-                    color: "#BEC1DD",
-                    margin: "1vh 0",
-                  }}>
-                  {item.des}
-                </p>
-
-                <div className="flex items-center justify-between mt-7 mb-3">
-                  <div className="flex items-center">
-                    {item.iconLists.map((icon, index) => (
-                      <div
-                        key={index}
-                        className="border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
-                        style={{
-                          transform: `translateX(-${5 * index + 2}px)`,
-                        }}>
+          projects.map((item) => {
+            if (item.requireFemaleVerification) {
+              return (
+                <div
+                  className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
+                  key={item.id}>
+                  <a 
+                    href="#" 
+                    onClick={(e) => handleProjectClick(e, item)}
+                    className="relative group/pin z-50 cursor-pointer block w-full h-full"
+                  >
+                    <PinContainer title={item.title}>
+                      <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
+                        <div
+                          className="relative w-full h-full overflow-hidden rounded-xl lg:rounded-3xl"
+                          style={{ backgroundColor: "#13162D" }}>
+                          <img
+                            src="/bg.png"
+                            alt="bgimg"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
                         <img
-                          src={icon}
-                          alt={`technology-${index + 1}`}
-                          className="p-2"
+                          src={item.img}
+                          alt={`${item.title} cover`}
+                          className="z-10 w-auto h-auto object-cover rounded-lg rounded md:rounded-lg sm:rounded-xl"
                         />
                       </div>
-                    ))}
+
+                      <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
+                        {item.title}
+                      </h1>
+
+                      <p
+                        className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
+                        style={{
+                          color: "#BEC1DD",
+                          margin: "1vh 0",
+                        }}>
+                        {item.des}
+                      </p>
+
+                      <div className="flex items-center justify-between mt-7 mb-3">
+                        <div className="flex items-center">
+                          {item.iconLists.map((icon, index) => (
+                            <div
+                              key={index}
+                              className="border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
+                              style={{
+                                transform: `translateX(-${5 * index + 2}px)`,
+                              }}>
+                              <img
+                                src={icon}
+                                alt={`technology-${index + 1}`}
+                                className="p-2"
+                              />
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="flex justify-center items-center">
+                          <p className="flex lg:text-xl md:text-xs text-sm text-purple">
+                            {t("projects.checkFemale")}
+                          </p>
+                          <FaLocationArrow className="ms-3" color="#CBACF9" />
+                        </div>
+                      </div>
+                    </PinContainer>
+                  </a>
+                </div>
+              );
+            }
+            
+            return (
+              <div
+                className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
+                key={item.id}>
+                <PinContainer title={item.title} href={item.link}>
+                  <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
+                    <div
+                      className="relative w-full h-full overflow-hidden rounded-xl lg:rounded-3xl"
+                      style={{ backgroundColor: "#13162D" }}>
+                      <img
+                        src="/bg.png"
+                        alt="bgimg"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <img
+                      src={item.img}
+                      alt={`${item.title} cover`}
+                      className="z-10 w-auto h-auto object-cover rounded-lg rounded md:rounded-lg sm:rounded-xl"
+                    />
                   </div>
 
-                  <div className="flex justify-center items-center">
-                    <p className="flex lg:text-xl md:text-xs text-sm text-purple">
-                      {item.requireFemaleVerification ? t("projects.checkFemale") : t("projects.check")}
-                    </p>
-                    <FaLocationArrow className="ms-3" color="#CBACF9" />
+                  <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
+                    {item.title}
+                  </h1>
+
+                  <p
+                    className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
+                    style={{
+                      color: "#BEC1DD",
+                      margin: "1vh 0",
+                    }}>
+                    {item.des}
+                  </p>
+
+                  <div className="flex items-center justify-between mt-7 mb-3">
+                    <div className="flex items-center">
+                      {item.iconLists.map((icon, index) => (
+                        <div
+                          key={index}
+                          className="border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
+                          style={{
+                            transform: `translateX(-${5 * index + 2}px)`,
+                          }}>
+                          <img
+                            src={icon}
+                            alt={`technology-${index + 1}`}
+                            className="p-2"
+                          />
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex justify-center items-center">
+                      <p className="flex lg:text-xl md:text-xs text-sm text-purple">
+                        {t("projects.check")}
+                      </p>
+                      <FaLocationArrow className="ms-3" color="#CBACF9" />
+                    </div>
                   </div>
-                </div>
-              </PinContainer>
-            </div>
-          ))}
+                </PinContainer>
+              </div>
+            );
+          })}
       </div>
     </div>
   );
