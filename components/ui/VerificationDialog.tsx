@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useLanguage } from '@/app/providers/language-provider';
-import Image from 'next/image';
 
 interface VerificationDialogProps {
   isOpen: boolean;
@@ -97,7 +96,7 @@ export const VerificationDialog: React.FC<VerificationDialogProps> = ({
   confirmBtnText,
   cancelBtnText,
 }) => {
-  const { t, dictionary } = useLanguage();
+  const { dictionary } = useLanguage();
   const [step, setStep] = useState(1);
 
   const handleConfirmStep = () => {
