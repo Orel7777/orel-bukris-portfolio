@@ -16,6 +16,14 @@ const RecentProjects = () => {
   const projects = [
     {
       id: 1,
+      title: t("projects.nameProject7"),
+      des: t("projects.description7"),
+      img: "/lihen.png",
+      iconLists: ["/re.svg", "/tail.svg", "/ts.svg"],
+      link: "https://www.lihen.co.il/",
+    },
+    {
+      id: 2,
       title: t("projects.nameProject"),
       des: t("projects.description1"),
       img: "/fitness.png",
@@ -23,7 +31,7 @@ const RecentProjects = () => {
       link: "https://empower-your-fitness-nvlf.vercel.app/",
     },
     {
-      id: 2,
+      id: 3,
       title: t("projects.nameProject2"),
       des: t("projects.description2"),
       img: "/outdoors.png",
@@ -31,7 +39,7 @@ const RecentProjects = () => {
       link: "https://outdoor-exploration-ten.vercel.app/",
     },
     {
-      id: 3,
+      id: 4,
       title: t("projects.nameProject3"),
       des: t("projects.description3"),
       img: "/island.png",
@@ -39,7 +47,7 @@ const RecentProjects = () => {
       link: "https://island-portfolio-mwv4.vercel.app/",
     },
     {
-      id: 4,
+      id: 5,
       title: t("projects.nameProject4"),
       des: t("projects.description4"),
       img: "/3Dex.png",
@@ -47,7 +55,7 @@ const RecentProjects = () => {
       link: "https://3-d-example1-orel-bukris.vercel.app/",
     },
     {
-      id: 5,
+      id: 6,
       title: t("projects.nameProject5"),
       des: t("projects.description5"),
       img: "/iphone.png",
@@ -55,7 +63,7 @@ const RecentProjects = () => {
       link: "https://apple-website-example-beryl.vercel.app/",
     },
     {
-      id: 6,
+      id: 7,
       title: t("projects.nameProject6"),
       des: t("projects.description6"),
       img: "/T-shirt.png",
