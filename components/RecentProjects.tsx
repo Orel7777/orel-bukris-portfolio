@@ -120,13 +120,13 @@ const RecentProjects = () => {
         {t("projects.title")}{" "}
         <span className="text-purple">{t("projects.viewProject")}</span>
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 lg:gap-12 p-4 mt-10 justify-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 p-4 mt-10 justify-items-center max-w-[1400px] mx-auto">
         {isClient &&
           projects.map((item) => {
             if (item.requireFemaleVerification) {
               return (
                 <div
-                  className="h-[25rem] lg:h-[32.5rem] w-full max-w-[320px]"
+                  className="h-[25rem] lg:h-[32.5rem] w-full max-w-[400px]"
                   key={item.id}>
                   <a 
                     href="#" 
@@ -203,7 +203,7 @@ const RecentProjects = () => {
             
             return (
               <div
-                className="h-[25rem] lg:h-[32.5rem] w-full max-w-[320px]"
+                className="h-[25rem] lg:h-[32.5rem] w-full max-w-[400px]"
                 key={item.id}>
                 <PinContainer title={item.title} href={item.link}>
                   <div className="relative flex items-center justify-center w-full overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
