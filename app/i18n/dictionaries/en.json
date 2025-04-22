@@ -30,6 +30,7 @@
   "projects": {
     "title": "A peek at some of my",
     "viewProject": "recent projects",
+    "nameProject8": "Dikla Maduela - Women's Massage",
     "nameProject7": "Lihan Biton - RE/MAX Real Estate Agent",
     "nameProject": "Empower Your Fitness",
     "nameProject2": "Outdoors in Full",
@@ -37,6 +38,7 @@
     "nameProject4": "Interactive 3D Project",
     "nameProject5": "Apple Website Clone",
     "nameProject6": "3D T-Shirt Customizer",
+    "description8": "A landing page for women-only massage therapy services. Clean user interface, inviting design, and user-friendly approach. The site was built with privacy considerations and clear information presentation. Developed using React, Next.js, and TailwindCSS.",
     "description7": "Website for a professional real estate agent at RE/MAX unique. Modern design and user-friendly interface showcasing Lihan Biton's services in Modi'in. Built with React, Next.js, and TailwindCSS.",
     "description1": "Discover a modern fitness platform designed to motivate and guide you through your fitness journey. Built using React, TypeScript, and TailwindCSS.",
     "description2": "Experience the beauty of nature through a captivating web platform showcasing stunning locations around the world. Built using React and TailwindCSS",
@@ -44,7 +46,10 @@
     "description4": "A website showcasing an interactive 3D design experience with dynamic elements and innovative animations. Built using advanced technologies like React and Three.js.",
     "description5": "A responsive Apple website clone showcasing a clean design, animations, and Tailwind CSS integration",
     "description6": "An interactive 3D t-shirt customization app built with React and Three.js, allowing users to design shirts in real-time with ease.",
-    "check": "Check Live Site"
+    "check": "Check Live Site",
+    "checkFemale": "Women Only Access",
+    "femaleVerification1": "Are you a woman? This site is intended for women only.",
+    "femaleVerification2": "Do you confirm that you are a woman and want to view a site dedicated to massage services for women only?"
   },
   "experience": {
     "headerTitle": "My",

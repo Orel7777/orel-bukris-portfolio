@@ -16,6 +16,15 @@ const RecentProjects = () => {
   const projects = [
     {
       id: 1,
+      title: t("projects.nameProject8"),
+      des: t("projects.description8"),
+      img: "/dikla_maduela_1.png",
+      iconLists: ["/re.svg", "/tail.svg", "/ts.svg"],
+      link: "https://dikla-massage.co.il/",
+      requireFemaleVerification: true
+    },
+    {
+      id: 2,
       title: t("projects.nameProject7"),
       des: t("projects.description7"),
       img: "/lihen_biton.png",
@@ -23,7 +32,7 @@ const RecentProjects = () => {
       link: "https://www.lihen.co.il/",
     },
     {
-      id: 2,
+      id: 3,
       title: t("projects.nameProject"),
       des: t("projects.description1"),
       img: "/fitness.png",
@@ -31,7 +40,7 @@ const RecentProjects = () => {
       link: "https://empower-your-fitness-nvlf.vercel.app/",
     },
     {
-      id: 3,
+      id: 4,
       title: t("projects.nameProject2"),
       des: t("projects.description2"),
       img: "/outdoors.png",
@@ -39,7 +48,7 @@ const RecentProjects = () => {
       link: "https://outdoor-exploration-ten.vercel.app/",
     },
     {
-      id: 4,
+      id: 5,
       title: t("projects.nameProject3"),
       des: t("projects.description3"),
       img: "/island.png",
@@ -47,7 +56,7 @@ const RecentProjects = () => {
       link: "https://island-portfolio-mwv4.vercel.app/",
     },
     {
-      id: 5,
+      id: 6,
       title: t("projects.nameProject4"),
       des: t("projects.description4"),
       img: "/3Dex.png",
@@ -55,7 +64,7 @@ const RecentProjects = () => {
       link: "https://3-d-example1-orel-bukris.vercel.app/",
     },
     {
-      id: 6,
+      id: 7,
       title: t("projects.nameProject5"),
       des: t("projects.description5"),
       img: "/iphone.png",
@@ -63,7 +72,7 @@ const RecentProjects = () => {
       link: "https://apple-website-example-beryl.vercel.app/",
     },
     {
-      id: 7,
+      id: 8,
       title: t("projects.nameProject6"),
       des: t("projects.description6"),
       img: "/T-shirt.png",
@@ -71,6 +80,20 @@ const RecentProjects = () => {
       link: "https://shirt-craft-3-d.vercel.app/",
     },
   ];
+
+  const handleProjectClick = (e, project) => {
+    if (project.requireFemaleVerification) {
+      e.preventDefault();
+      const isWoman = window.confirm(t("projects.femaleVerification1"));
+      if (isWoman) {
+        const confirmAgain = window.confirm(t("projects.femaleVerification2"));
+        if (confirmAgain) {
+          window.open(project.link, '_blank');
+        }
+      }
+    }
+  };
+
   return (
     <div className="py-20" id="projects">
       <h1 className="heading">
@@ -83,7 +106,11 @@ const RecentProjects = () => {
             <div
               className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
               key={item.id}>
-              <PinContainer title={item.title} href={item.link}>
+              <PinContainer 
+                title={item.title} 
+                href={item.link}
+                onClick={(e) => item.requireFemaleVerification ? handleProjectClick(e, item) : null}
+              >
                 <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
                   <div
                     className="relative w-full h-full overflow-hidden rounded-xl lg:rounded-3xl"
@@ -91,13 +118,13 @@ const RecentProjects = () => {
                     <img
                       src="/bg.png"
                       alt="bgimg"
-                      className="w-full h-full object-cover "
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   <img
                     src={item.img}
                     alt={`${item.title} cover`}
-                    className="z-10 w-auto h-auto object-cover rounded-lg rounded md:rounded-lg sm:rounded-xl "
+                    className="z-10 w-auto h-auto object-cover rounded-lg rounded md:rounded-lg sm:rounded-xl"
                   />
                 </div>
 
@@ -134,7 +161,7 @@ const RecentProjects = () => {
 
                   <div className="flex justify-center items-center">
                     <p className="flex lg:text-xl md:text-xs text-sm text-purple">
-                      {t("projects.check")}
+                      {item.requireFemaleVerification ? t("projects.checkFemale") : t("projects.check")}
                     </p>
                     <FaLocationArrow className="ms-3" color="#CBACF9" />
                   </div>
