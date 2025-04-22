@@ -18,7 +18,7 @@ const RecentProjects = () => {
       id: 1,
       title: t("projects.nameProject7"),
       des: t("projects.description7"),
-      img: "/lihen.png",
+      img: "/lihen_biton.png",
       iconLists: ["/re.svg", "/tail.svg", "/ts.svg"],
       link: "https://www.lihen.co.il/",
     },
