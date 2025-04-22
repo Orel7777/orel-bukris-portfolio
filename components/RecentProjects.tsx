@@ -144,13 +144,26 @@ const RecentProjects = () => {
                             width={500}
                             height={250}
                           />
-                          <Image
-                            src={item.img}
-                            alt={`${item.title} cover`}
-                            className="absolute inset-0 w-full h-full object-contain object-center p-4 group-hover:scale-105 transition-transform duration-700"
-                            width={500}
-                            height={250}
-                          />
+                          {item.id === 1 ? (
+                            <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+                              <Image
+                                src={item.img}
+                                alt={`${item.title} cover`}
+                                className="object-contain max-h-[90%] max-w-[90%] group-hover:scale-105 transition-transform duration-700"
+                                width={400}
+                                height={225}
+                                priority
+                              />
+                            </div>
+                          ) : (
+                            <Image
+                              src={item.img}
+                              alt={`${item.title} cover`}
+                              className="absolute inset-0 w-full h-full object-cover md:object-contain p-2 group-hover:scale-105 transition-transform duration-700"
+                              width={500}
+                              height={250}
+                            />
+                          )}
                         </div>
                         
                         <div className="p-6 flex-grow flex flex-col">
@@ -233,13 +246,26 @@ const RecentProjects = () => {
                           width={500}
                           height={250}
                         />
-                        <Image
-                          src={item.img}
-                          alt={`${item.title} cover`}
-                          className="absolute inset-0 w-full h-full object-contain object-center p-4 group-hover:scale-105 transition-transform duration-700"
-                          width={500}
-                          height={250}
-                        />
+                        {item.id === 1 ? (
+                          <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+                            <Image
+                              src={item.img}
+                              alt={`${item.title} cover`}
+                              className="object-contain max-h-[90%] max-w-[90%] group-hover:scale-105 transition-transform duration-700"
+                              width={400}
+                              height={225}
+                              priority
+                            />
+                          </div>
+                        ) : (
+                          <Image
+                            src={item.img}
+                            alt={`${item.title} cover`}
+                            className="absolute inset-0 w-full h-full object-cover md:object-contain p-2 group-hover:scale-105 transition-transform duration-700"
+                            width={500}
+                            height={250}
+                          />
+                        )}
                       </div>
                       
                       <div className="p-6 flex-grow flex flex-col">
