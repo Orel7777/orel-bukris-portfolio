@@ -10,7 +10,7 @@ interface PinProps {
   href?: string;
   className?: string;
   containerClassName?: string;
-  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
 export const PinContainer = ({
@@ -21,7 +21,7 @@ export const PinContainer = ({
   containerClassName,
   onClick,
 }: PinProps) => {
-  const [transform, setTransform] = useState(
+  const [, setTransform] = useState(
     "translate(-50%,-50%) rotateX(0deg)"
   );
 

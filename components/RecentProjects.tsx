@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { PinContainer } from "./ui/3d-pin";
 import { FaLocationArrow } from "react-icons/fa";
 import { useLanguage } from "@/app/providers/language-provider";
+import Image from "next/image";
 
 interface ProjectItem {
   id: number;
@@ -128,16 +129,20 @@ const RecentProjects = () => {
                         <div
                           className="relative w-full h-full overflow-hidden rounded-xl lg:rounded-3xl"
                           style={{ backgroundColor: "#13162D" }}>
-                          <img
+                          <Image
                             src="/bg.png"
                             alt="bgimg"
                             className="w-full h-full object-cover"
+                            width={400}
+                            height={300}
                           />
                         </div>
-                        <img
+                        <Image
                           src={item.img}
                           alt={`${item.title} cover`}
                           className="z-10 w-auto h-auto object-cover rounded-lg rounded md:rounded-lg sm:rounded-xl"
+                          width={400}
+                          height={300}
                         />
                       </div>
 
@@ -163,10 +168,12 @@ const RecentProjects = () => {
                               style={{
                                 transform: `translateX(-${5 * index + 2}px)`,
                               }}>
-                              <img
+                              <Image
                                 src={icon}
                                 alt={`technology-${index + 1}`}
                                 className="p-2"
+                                width={40}
+                                height={40}
                               />
                             </div>
                           ))}
@@ -194,16 +201,20 @@ const RecentProjects = () => {
                     <div
                       className="relative w-full h-full overflow-hidden rounded-xl lg:rounded-3xl"
                       style={{ backgroundColor: "#13162D" }}>
-                      <img
+                      <Image
                         src="/bg.png"
                         alt="bgimg"
                         className="w-full h-full object-cover"
+                        width={400}
+                        height={300}
                       />
                     </div>
-                    <img
+                    <Image
                       src={item.img}
                       alt={`${item.title} cover`}
                       className="z-10 w-auto h-auto object-cover rounded-lg rounded md:rounded-lg sm:rounded-xl"
+                      width={400}
+                      height={300}
                     />
                   </div>
 
@@ -229,10 +240,12 @@ const RecentProjects = () => {
                           style={{
                             transform: `translateX(-${5 * index + 2}px)`,
                           }}>
-                          <img
+                          <Image
                             src={icon}
                             alt={`technology-${index + 1}`}
                             className="p-2"
+                            width={40}
+                            height={40}
                           />
                         </div>
                       ))}

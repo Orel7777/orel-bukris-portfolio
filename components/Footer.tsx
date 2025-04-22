@@ -5,6 +5,8 @@ import { socialMedia } from "@/data";
 import emailjs from "@emailjs/browser";
 import { MagicButton } from "./ui/MagicButton";
 import { useLanguage } from "@/app/providers/language-provider";
+import Image from "next/image";
+
 interface FormData {
   name: string;
   email: string;
@@ -202,12 +204,12 @@ const Footer: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="group w-10 h-10 flex justify-center items-center rounded-lg border mt-3 border-white/10 backdrop-blur-lg bg-white/5 hover:bg-white/10 transition-all duration-300">
-              <img
+              <Image
                 src={info.img}
                 alt={`${info.id} icon`}
-                width={20}
-                height={20}
-                className="opacity-70 group-hover:opacity-100 transition-opacity"
+                width={24}
+                height={24}
+                className="group-hover:scale-75 transition-all duration-200"
               />
             </a>
           ))}
