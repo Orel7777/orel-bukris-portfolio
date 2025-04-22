@@ -89,7 +89,7 @@
 
   /* Project cards 3D effect */
   .perspective {
-    perspective: 1500px;
+    perspective: 2000px;
   }
 
   .preserve-3d {
