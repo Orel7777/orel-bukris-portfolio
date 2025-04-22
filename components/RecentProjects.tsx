@@ -5,6 +5,7 @@ import { PinContainer } from "./ui/3d-pin";
 import { FaLocationArrow } from "react-icons/fa";
 import { useLanguage } from "@/app/providers/language-provider";
 import Image from "next/image";
+import VerificationDialog from "./ui/VerificationDialog";
 
 interface ProjectItem {
   id: number;
@@ -19,6 +20,8 @@ interface ProjectItem {
 const RecentProjects = () => {
   const [isClient, setIsClient] = useState(false);
   const { t } = useLanguage();
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -95,14 +98,20 @@ const RecentProjects = () => {
   const handleProjectClick = (e: React.MouseEvent, project: ProjectItem) => {
     if (project.requireFemaleVerification) {
       e.preventDefault();
-      const isWoman = window.confirm(t("projects.femaleVerification1"));
-      if (isWoman) {
-        const confirmAgain = window.confirm(t("projects.femaleVerification2"));
-        if (confirmAgain) {
-          window.open(project.link, '_blank');
-        }
-      }
+      setSelectedProject(project);
+      setDialogOpen(true);
     }
+  };
+
+  const handleConfirmDialog = () => {
+    if (selectedProject && selectedProject.link) {
+      window.open(selectedProject.link, '_blank');
+    }
+    setDialogOpen(false);
+  };
+
+  const handleCancelDialog = () => {
+    setDialogOpen(false);
   };
 
   return (
@@ -263,6 +272,14 @@ const RecentProjects = () => {
             );
           })}
       </div>
+
+      {isClient && (
+        <VerificationDialog
+          isOpen={dialogOpen}
+          onConfirm={handleConfirmDialog}
+          onCancel={handleCancelDialog}
+        />
+      )}
     </div>
   );
 };

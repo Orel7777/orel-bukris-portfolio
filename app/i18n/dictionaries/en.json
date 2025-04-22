@@ -51,6 +51,15 @@
     "femaleVerification1": "Are you a woman? This site is intended for women only.",
     "femaleVerification2": "Do you confirm that you are a woman and want to view a site dedicated to massage services for women only?"
   },
+  "female_verification": {
+    "title": "Restricted Access Check",
+    "second_title": "Additional Confirmation",
+    "step1_text": "This site is intended for women only and features massage services specially tailored for women. Are you a woman?",
+    "step2_text": "Do you confirm that you are a woman and want to view a site dedicated to massage services for women only?",
+    "confirm_btn": "Yes, I am a woman",
+    "final_confirm_btn": "Yes, I confirm",
+    "cancel_btn": "Cancel"
+  },
   "experience": {
     "headerTitle": "My",
     "headerTitle1": "Work Experience",
