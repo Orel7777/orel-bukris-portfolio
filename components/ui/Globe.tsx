@@ -60,6 +60,11 @@ interface WorldProps {
 
 let numbersOfRings = [0];
 
+// פונקציה לבדיקת תקינות של ערכי מיקום
+const isValidCoordinate = (value: number): boolean => {
+  return value !== undefined && value !== null && !isNaN(value) && isFinite(value);
+};
+
 export function Globe({ globeConfig, data }: WorldProps) {
   const [globeData, setGlobeData] = useState<
     | {
@@ -112,20 +117,28 @@ export function Globe({ globeConfig, data }: WorldProps) {
     for (let i = 0; i < arcs.length; i++) {
       const arc = arcs[i];
       const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
-      points.push({
-        size: defaultProps.pointSize,
-        order: arc.order,
-        color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
-        lat: arc.startLat,
-        lng: arc.startLng,
-      });
-      points.push({
-        size: defaultProps.pointSize,
-        order: arc.order,
-        color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
-        lat: arc.endLat,
-        lng: arc.endLng,
-      });
+      
+      // בדיקה שהקואורדינטות תקינות לנקודת ההתחלה
+      if (isValidCoordinate(arc.startLat) && isValidCoordinate(arc.startLng)) {
+        points.push({
+          size: defaultProps.pointSize,
+          order: arc.order,
+          color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
+          lat: arc.startLat,
+          lng: arc.startLng,
+        });
+      }
+      
+      // בדיקה שהקואורדינטות תקינות לנקודת הסיום
+      if (isValidCoordinate(arc.endLat) && isValidCoordinate(arc.endLng)) {
+        points.push({
+          size: defaultProps.pointSize,
+          order: arc.order,
+          color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
+          lat: arc.endLat,
+          lng: arc.endLng,
+        });
+      }
     }
 
     // remove duplicates for same lat and lng
@@ -151,8 +164,17 @@ export function Globe({ globeConfig, data }: WorldProps) {
   const startAnimation = useCallback(() => {
     if (!globeRef.current || !globeData) return;
 
+    // סינון נתוני הקשתות כדי להבטיח שאין ערכי NaN
+    const validArcs = data.filter(arc => 
+      isValidCoordinate(arc.startLat) && 
+      isValidCoordinate(arc.startLng) && 
+      isValidCoordinate(arc.endLat) && 
+      isValidCoordinate(arc.endLng) && 
+      isValidCoordinate(arc.arcAlt)
+    );
+
     globeRef.current
-      .arcsData(data)
+      .arcsData(validArcs)
       .arcStartLat((d) => (d as { startLat: number }).startLat * 1)
       .arcStartLng((d) => (d as { startLng: number }).startLng * 1)
       .arcEndLat((d) => (d as { endLat: number }).endLat * 1)
@@ -169,9 +191,15 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .arcDashGap(15)
       .arcDashAnimateTime(() => defaultProps.arcTime);
 
+    // וידוא שנתוני הנקודות תקינים
+    const validPoints = globeData.filter(point => 
+      isValidCoordinate(point.lat) && 
+      isValidCoordinate(point.lng)
+    );
+
     globeRef.current
-      .pointsData(data)
-      .pointColor((e) => (e as { color: string }).color)
+      .pointsData(validPoints)
+      .pointColor((e) => (e as { color: (t: number) => string }).color(0.5))
       .pointsMerge(true)
       .pointAltitude(0.0)
       .pointRadius(2);
@@ -214,14 +242,23 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
     const interval = setInterval(() => {
       if (!globeRef.current || !globeData) return;
+      
+      // וידוא שיש נתונים תקינים
+      const validGlobeData = globeData.filter(point => 
+        isValidCoordinate(point.lat) && 
+        isValidCoordinate(point.lng)
+      );
+      
+      if (validGlobeData.length === 0) return;
+      
       numbersOfRings = genRandomNumbers(
         0,
-        data.length,
-        Math.floor((data.length * 4) / 5)
+        validGlobeData.length,
+        Math.min(Math.floor((validGlobeData.length * 4) / 5), validGlobeData.length)
       );
 
       globeRef.current.ringsData(
-        globeData.filter((d, i) => numbersOfRings.includes(i))
+        validGlobeData.filter((d, i) => numbersOfRings.includes(i))
       );
     }, 2000);
 
