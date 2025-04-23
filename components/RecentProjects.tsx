@@ -158,12 +158,12 @@ const RecentProjects = () => {
                       </div>
                       <div className={`p-6 flex-grow flex flex-col ${item.id === 9 ? 'pt-2' : ''}`}>
                         <h2
-                          className={`font-bold text-white mb-2 group-hover:text-purple transition-colors duration-300 ${item.id === 9 ? 'text-xl md:text-2xl' : 'text-2xl'}`}
+                          className={`font-bold text-white mb-2 group-hover:text-purple transition-colors duration-300 ${item.id === 9 ? 'text-xl md:text-2xl' : item.id === 5 ? 'text-xl md:text-2xl' : 'text-2xl'}`}
                         >
                           {item.title}
                         </h2>
                         <p
-                          className={`text-[#BEC1DD] font-light mb-auto ${item.id === 9 ? 'text-sm md:text-lg max-h-20 overflow-hidden line-clamp-3' : 'text-lg'}`}
+                          className={`text-[#BEC1DD] font-light mb-auto ${item.id === 9 ? 'text-sm md:text-lg max-h-20 overflow-hidden line-clamp-3' : item.id === 5 ? 'text-base md:text-lg' : 'text-lg'}`}
                         >
                           {item.des}
                         </p>
