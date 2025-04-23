@@ -156,11 +156,15 @@ const RecentProjects = () => {
                           priority={item.id === 1}
                         />
                       </div>
-                      <div className="p-6 flex-grow flex flex-col">
-                        <h2 className="text-2xl font-bold text-white mb-2 group-hover:text-purple transition-colors duration-300">
+                      <div className={`p-6 flex-grow flex flex-col ${item.id === 9 ? 'pt-2' : ''}`}>
+                        <h2
+                          className={`font-bold text-white mb-2 group-hover:text-purple transition-colors duration-300 ${item.id === 9 ? 'text-xl md:text-2xl' : 'text-2xl'}`}
+                        >
                           {item.title}
                         </h2>
-                        <p className="text-[#BEC1DD] text-lg font-light mb-auto">
+                        <p
+                          className={`text-[#BEC1DD] font-light mb-auto ${item.id === 9 ? 'text-sm md:text-lg max-h-20 overflow-hidden line-clamp-3' : 'text-lg'}`}
+                        >
                           {item.des}
                         </p>
                         <div className="flex items-center justify-between mt-8">
