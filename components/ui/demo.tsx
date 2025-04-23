@@ -6,7 +6,8 @@ import { Spotlight } from "@/components/ui/Spotlight"
 import { useLanguage } from '@/app/providers/language-provider';
  
 export function SplineSceneBasic() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const isHebrew = language === 'he';
   
   return (
     <Card className="w-full h-[500px] bg-[#04071d] relative overflow-hidden">
@@ -15,19 +16,19 @@ export function SplineSceneBasic() {
         fill="white"
       />
       
-      <div className="flex h-full">
+      <div className="flex flex-col sm:flex-row h-full">
         {/* Left content */}
-        <div className="flex-1 p-8 relative z-10 flex flex-col justify-center">
-          <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
+        <div className="flex-1 p-6 sm:p-8 relative z-10 flex flex-col justify-center">
+          <h1 className={`text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 ${isHebrew ? 'text-right' : 'text-left'}`}>
             {t('spline_scene.title')}
           </h1>
-          <p className="mt-4 text-neutral-300 max-w-lg">
+          <p className={`mt-2 sm:mt-4 text-sm sm:text-base text-neutral-300 max-w-xs sm:max-w-sm md:max-w-lg ${isHebrew ? 'text-right' : 'text-left'}`}>
             {t('spline_scene.description')}
           </p>
         </div>
 
         {/* Right content */}
-        <div className="flex-1 relative">
+        <div className="flex-1 relative h-[250px] sm:h-full">
           <SplineScene 
             scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
             className="w-full h-full"
