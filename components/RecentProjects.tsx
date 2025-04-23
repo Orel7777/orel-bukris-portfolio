@@ -53,13 +53,14 @@ const RecentProjects = () => {
       link: "https://empower-your-fitness-nvlf.vercel.app/",
     },
     {
-      id: 4,
-      title: t("projects.nameProject2"),
-      des: t("projects.description2"),
-      img: "/outdoors.png",
+      id: 9,
+      title: t("projects.nameProject9"),
+      des: t("projects.description9"),
+      img: "/limor_mimon.png",
       iconLists: ["/re.svg", "/tail.svg"],
-      link: "https://outdoor-exploration-ten.vercel.app/",
+      link: "https://limor-mimon-4h3u.vercel.app/"
     },
+
     {
       id: 5,
       title: t("projects.nameProject3"),
@@ -92,6 +93,7 @@ const RecentProjects = () => {
       iconLists: ["/re.svg", "/tail.svg"],
       link: "https://shirt-craft-3-d.vercel.app/",
     },
+
   ];
 
   const handleProjectClick = (e: React.MouseEvent, project: ProjectItem) => {
@@ -148,7 +150,7 @@ const RecentProjects = () => {
                         <Image
                           src={item.img}
                           alt={`${item.title} cover`}
-                          className="absolute inset-0 w-full h-full object-cover md:object-contain p-2 group-hover:scale-105 transition-transform duration-700"
+                          className={`absolute inset-0 w-full h-full ${item.id === 9 ? 'object-contain bg-white' : 'object-cover md:object-contain p-2'} group-hover:scale-105 transition-transform duration-700`}
                           width={500}
                           height={250}
                           priority={item.id === 1}
