@@ -2,6 +2,7 @@
 import React from 'react';
 import { BentoGrid, BentoGridItem } from './ui/BentoGrid';
 import { useLanguage } from '@/app/providers/language-provider';
+import { SplineSceneBasic } from './ui/demo';
 
 const Grid = () => {
   const { t } = useLanguage();
@@ -52,13 +53,14 @@ const Grid = () => {
     {
       id: 5,
       title: t('grid.tech2'),
-      description: "The Inside Scoop",
+      description: "",
       className: "md:col-span-3 md:row-span-2",
       imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
       titleClassName: "justify-center md:justify-start lg:justify-center",
       textAlign: "left" as const, 
-      img: "/b5.svg",
-      spareImg: "/grid.svg",
+      img: "",
+      spareImg: "",
+      customContent: <SplineSceneBasic />
     },
     {
       id: 6,
@@ -75,7 +77,7 @@ const Grid = () => {
   return (
     <section id="about">
       <BentoGrid>
-        {gridItems.map(({ id, title, description, className, imgClassName, titleClassName, textAlign, img, spareImg }) => (
+        {gridItems.map(({ id, title, description, className, imgClassName, titleClassName, textAlign, img, spareImg, customContent }) => (
           <BentoGridItem
             key={id}
             id={id}
@@ -87,6 +89,7 @@ const Grid = () => {
             textAlign={textAlign}
             img={img}
             spareImg={spareImg}
+            customContent={customContent}
           />
         ))}
       </BentoGrid>

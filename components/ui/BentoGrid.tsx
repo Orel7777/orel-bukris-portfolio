@@ -52,6 +52,7 @@ export const BentoGridItem = ({
   titleClassName,
   spareImg,
   textAlign,
+  customContent,
 }: {
   className?: string;
   title?: string | React.ReactNode;
@@ -62,6 +63,7 @@ export const BentoGridItem = ({
   titleClassName?: string;
   spareImg?: string;
   textAlign?: 'left' | 'right' | 'center';
+  customContent?: React.ReactNode;
 }) => {
   const [copied, setCopied] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -101,99 +103,105 @@ export const BentoGridItem = ({
           "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
       }}>
       <div className={`${id === 6 && "flex justify-center"} h-full`}>
-        <div className="w-full h-full absolute">
-          {img && (
-            <Image
-              src={img}
-              alt={img}
-              className={cn(imgClassName, "object-cover object-center")}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          )}
-        </div>
-        <div
-          className={cn(
-            `absolute ${isRTL ? 'left-0' : 'right-0'} -bottom-5`,
-            id === 5 && "w-full opacity-80"
-          )}>
-          {spareImg && (
-            <Image
-              src={spareImg}
-              alt={spareImg}
-              className="object-cover object-center w-full h-full"
-              width={300}
-              height={300}
-            />
-          )}
-        </div>
-        {id === 6 && (
-          <BackgroundGradientAnimation>
-            <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
-          </BackgroundGradientAnimation>
-        )}
-        <div
-          className={cn(
-            titleClassName,
-            `group-hover/bento:translate-x-${isRTL ? '-2' : '2'} transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10`
-          )}>
-          <div className={isRTL ? 'text-right' : 'text-left'}>
-            {description}
-          </div>
-          <div
-            className={`font-sans text-lg lg:text-3xl max-w-96 font-bold z-10 ${
-              textAlign ? `text-${textAlign}` : isRTL ? 'text-right' : 'text-center'
-            }`}>
-            {title}
-          </div>
+        {customContent ? (
+          customContent
+        ) : (
+          <>
+            <div className="w-full h-full absolute">
+              {img && (
+                <Image
+                  src={img}
+                  alt={img}
+                  className={cn(imgClassName, "object-cover object-center")}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              )}
+            </div>
+            <div
+              className={cn(
+                `absolute ${isRTL ? 'left-0' : 'right-0'} -bottom-5`,
+                id === 5 && "w-full opacity-80"
+              )}>
+              {spareImg && (
+                <Image
+                  src={spareImg}
+                  alt={spareImg}
+                  className="object-cover object-center w-full h-full"
+                  width={300}
+                  height={300}
+                />
+              )}
+            </div>
+            {id === 6 && (
+              <BackgroundGradientAnimation>
+                <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
+              </BackgroundGradientAnimation>
+            )}
+            <div
+              className={cn(
+                titleClassName,
+                `group-hover/bento:translate-x-${isRTL ? '-2' : '2'} transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10`
+              )}>
+              <div className={isRTL ? 'text-right' : 'text-left'}>
+                {description}
+              </div>
+              <div
+                className={`font-sans text-lg lg:text-3xl max-w-96 font-bold z-10 ${
+                  textAlign ? `text-${textAlign}` : isRTL ? 'text-right' : 'text-center'
+                }`}>
+                {title}
+              </div>
 
-          {id === 2 && <GlobeDemo />}
-          {id === 3 && (
-            <div className={`flex gap-1 lg:gap-5 w-fit absolute ${isRTL ? '-left-3 lg:-left-2' : '-right-3 lg:-right-2'}`}>
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8 ">
-                {["React.js", "Next.js", "TypeScript"].map((item) => (
-                  <span
-                    key={item}
-                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E]">
-                    {item}
-                  </span>
-                ))}
-                <span className="py-4 px-3 rounded-lg text-center bg-[#10132e]" />
-              </div>
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8 ">
-                <span className="py-4 px-3 rounded-lg text-center bg-[#10132e]" />
-                {["MongoDB", "Express", "Node"].map((item) => (
-                  <span
-                    key={item}
-                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E]">
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-          {id === 6 && (
-            <div className="mt-5 relative">
-              <div className={`absolute -bottom-5 ${isRTL ? 'left-0' : 'right-0'}`}>
-                {isMounted && copied && (
-                  <Lottie
-                    animationData={animationData}
-                    loop={true}
-                    autoplay={true}
-                    style={{ width: 150, height: 150 }}
+              {id === 2 && <GlobeDemo />}
+              {id === 3 && (
+                <div className={`flex gap-1 lg:gap-5 w-fit absolute ${isRTL ? '-left-3 lg:-left-2' : '-right-3 lg:-right-2'}`}>
+                  <div className="flex flex-col gap-3 md:gap-3 lg:gap-8 ">
+                    {["React.js", "Next.js", "TypeScript"].map((item) => (
+                      <span
+                        key={item}
+                        className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E]">
+                        {item}
+                      </span>
+                    ))}
+                    <span className="py-4 px-3 rounded-lg text-center bg-[#10132e]" />
+                  </div>
+                  <div className="flex flex-col gap-3 md:gap-3 lg:gap-8 ">
+                    <span className="py-4 px-3 rounded-lg text-center bg-[#10132e]" />
+                    {["MongoDB", "Express", "Node"].map((item) => (
+                      <span
+                        key={item}
+                        className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E]">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {id === 6 && (
+                <div className="mt-5 relative">
+                  <div className={`absolute -bottom-5 ${isRTL ? 'left-0' : 'right-0'}`}>
+                    {isMounted && copied && (
+                      <Lottie
+                        animationData={animationData}
+                        loop={true}
+                        autoplay={true}
+                        style={{ width: 150, height: 150 }}
+                      />
+                    )}
+                  </div>
+                  <MagicButton
+                    title={copied ? t('grid.email3') : t('grid.email2')}
+                    icon={<IoCopyOutline />}
+                    position={isRTL ? "right" : "left"}
+                    handleClick={handleCopy}
+                    otherClasses="!bg-[#161a31]"
                   />
-                )}
-              </div>
-              <MagicButton
-                title={copied ? t('grid.email3') : t('grid.email2')}
-                icon={<IoCopyOutline />}
-                position={isRTL ? "right" : "left"}
-                handleClick={handleCopy}
-                otherClasses="!bg-[#161a31]"
-              />
+                </div>
+              )}
             </div>
-          )}
-        </div>
+          </>
+        )}
       </div>
     </div>
   );

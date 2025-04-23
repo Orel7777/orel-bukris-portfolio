@@ -27,6 +27,10 @@
     "email2": "Copy my email address",
     "email3": "Email is Copied!"
   },
+  "spline_scene": {
+    "title": "Spectacular 3D Development",
+    "description": "Transform your UI with breathtaking 3D scenes. Create immersive experiences that captivate audiences and elevate your designs."
+  },
   "projects": {
     "title": "A peek at some of my",
     "viewProject": "recent projects",
