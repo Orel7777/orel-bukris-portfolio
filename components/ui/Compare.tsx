@@ -4,6 +4,7 @@ import { SparklesCore } from "@/components/ui/Sparkles";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 import { IconDotsVertical } from "@tabler/icons-react";
+import Image from "next/image";
 
 interface CompareProps {
   firstImage?: string;
@@ -69,7 +70,7 @@ export const Compare = ({
 
   function mouseEnterHandler() {
     stopAutoplay();
-}
+  }
 
   function mouseLeaveHandler() {
     if (slideMode === "hover") {
@@ -79,7 +80,7 @@ export const Compare = ({
       setIsDragging(false);
     }
     startAutoplay();
-}
+   }
 
 
 const handleStart = useCallback(() => {
@@ -140,7 +141,7 @@ const handleStart = useCallback(() => {
     (e: React.TouchEvent) => {
       if (!autoplay) {
         handleMove(e.touches[0].clientX);
-      }
+     }
     },
     [handleMove, autoplay]
   );
@@ -161,17 +162,17 @@ const handleStart = useCallback(() => {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onTouchMove={handleTouchMove}
-    >
+     >
       <AnimatePresence initial={false}>
         <motion.div
           className="h-full w-px absolute top-0 m-auto z-30 bg-gradient-to-b from-transparent from-[5%] to-[95%] via-indigo-500 to-transparent"
-          style={{
+           style={{
             left: `${sliderXPercent}%`,
             top: "0",
             zIndex: 40,
-          }}
+           }}
           transition={{ duration: 0 }}
-        >
+         >
           <div className="w-36 h-full [mask-image:radial-gradient(100px_at_left,white,transparent)] absolute top-1/2 -translate-y-1/2 left-0 bg-gradient-to-r from-indigo-400 via-transparent to-transparent z-20 opacity-50" />
           <div className="w-10 h-1/2 [mask-image:radial-gradient(50px_at_left,white,transparent)] absolute top-1/2 -translate-y-1/2 left-0 bg-gradient-to-r from-cyan-400 via-transparent to-transparent z-10 opacity-100" />
           <div className="w-10 h-3/4 top-1/2 -translate-y-1/2 absolute -right-10 [mask-image:radial-gradient(100px_at_left,white,transparent)]">
@@ -187,52 +188,58 @@ const handleStart = useCallback(() => {
           {showHandlebar && (
             <div className="h-5 w-5 rounded-md top-1/2 -translate-y-1/2 bg-white z-30 -right-2.5 absolute   flex items-center justify-center shadow-[0px_-1px_0px_0px_#FFFFFF40]">
               <IconDotsVertical className="h-4 w-4 text-black" />
-            </div>
-          )}
+           </div>
+         )}
         </motion.div>
       </AnimatePresence>
       <div className="overflow-hidden w-full h-full relative z-20 pointer-events-none">
-        <AnimatePresence initial={false}>
+         <AnimatePresence initial={false}>
           {firstImage ? (
-            <motion.div
-              className={cn(
+             <motion.div
+               className={cn(
                 "absolute inset-0 z-20 rounded-2xl flex-shrink-0 w-full h-full select-none overflow-hidden",
-                firstImageClassName
-              )}
-              style={{
-                clipPath: `inset(0 ${100 - sliderXPercent}% 0 0)`,
-              }}
-              transition={{ duration: 0 }}
-            >
-              <img
-                alt="first image"
-                src={firstImage}
-                className={cn(
+                 firstImageClassName
+               )}
+               style={{
+                 clipPath: `inset(0 ${100 - sliderXPercent}% 0 0)`,
+               }}
+               transition={{ duration: 0 }}
+             >
+              <Image
+                 alt="first image"
+                 src={firstImage}
+                 className={cn(
                   "absolute inset-0  z-20 rounded-2xl flex-shrink-0 w-full h-full select-none",
-                  firstImageClassName
-                )}
-                draggable={false}
-              />
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
-      </div>
+                   firstImageClassName
+                 )}
+                 draggable={false}
+                 fill
+                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+               />
+             </motion.div>
+           ) : null}
+         </AnimatePresence>
+       </div>
 
-      <AnimatePresence initial={false}>
-        {secondImage ? (
-          <motion.img
-            className={cn(
+       <AnimatePresence initial={false}>
+         {secondImage ? (
+          <motion.div className="absolute inset-0 z-10">
+            <Image
+               className={cn(
               "absolute top-0 left-0 z-[19]  rounded-2xl w-full h-full select-none",
-              secondImageClassname
-            )}
-            alt="second image"
-            src={secondImage}
-            draggable={false}
-          />
-        ) : null}
-      </AnimatePresence>
-    </div>
-  );
-};
+                 secondImageClassname
+               )}
+               alt="second image"
+               src={secondImage}
+               draggable={false}
+               fill
+               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+             />
+           </motion.div>
+         ) : null}
+       </AnimatePresence>
+     </div>
+   );
+ };
 
 const MemoizedSparklesCore = React.memo(SparklesCore);

@@ -34,7 +34,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         const detectIsraelByLanguage = () => {
           const userLanguages = navigator.languages || 
                                [navigator.language || 
-                               (navigator as any).userLanguage];
+                               (navigator as { userLanguage?: string }).userLanguage];
           
           return userLanguages.some(lang => 
             lang.toLowerCase().includes('he') || 
@@ -94,7 +94,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
               return data.country === 'IL';
             }
             return false;
-          } catch (error) {
+          } catch {
             console.log('Country API detection failed, using fallback methods');
             return false;
           }
@@ -110,11 +110,11 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         ) {
           setLanguage('he');
         }
-      } catch (error) {
-        console.error('Error detecting location:', error);
+      } catch (err) {
+        console.error('Error detecting location:', err);
         // במקרה של שגיאה, השתמש בשפת הדפדפן כדי להחליט
         try {
-          const browserLang = navigator.language || (navigator as any).userLanguage;
+          const browserLang = navigator.language || (navigator as { userLanguage?: string }).userLanguage;
           if (browserLang && (browserLang.startsWith('he') || browserLang.startsWith('iw'))) {
             setLanguage('he');
           }
@@ -134,12 +134,15 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   const t = (path: string): string => {
     const keys = path.split('.');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let current: any = dictionary;
+    let current: unknown = dictionary;
     for (const key of keys) {
-      current = current?.[key];
+      if (current && typeof current === 'object') {
+        current = (current as Record<string, unknown>)[key];
+      } else {
+        return path;
+      }
     }
-    return current || path;
+    return typeof current === 'string' ? current : path;
   };
 
   return (
