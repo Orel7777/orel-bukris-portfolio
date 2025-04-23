@@ -20,16 +20,57 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const detectLocationAndSetLanguage = async () => {
       try {
-        const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
+        // שימוש בשירות חלופי שתומך ב-CORS ובודק אם המשתמש מישראל
+        const detectIsraelByTimeZone = () => {
+          // בדיקה באמצעות אזור זמן
+          const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+          return timeZone === 'Asia/Jerusalem' || 
+                 timeZone.includes('Israel') || 
+                 timeZone.includes('Tel_Aviv');
+        };
         
-        if (data.country_code === 'IL') {
+        const detectIsraelByLanguage = () => {
+          // בדיקה באמצעות שפת הדפדפן
+          const userLanguages = navigator.languages || 
+                               [navigator.language || 
+                               (navigator as any).userLanguage];
+          
+          return userLanguages.some(lang => 
+            lang.toLowerCase().includes('he') || 
+            lang.toLowerCase().includes('iw')
+          );
+        };
+        
+        if (detectIsraelByTimeZone() || detectIsraelByLanguage()) {
           setLanguage('he');
         } else {
-          setLanguage('en');
+          // נסה להשתמש בשירות אחר שתומך ב-CORS
+          try {
+            const response = await fetch('https://api.country.is', {
+              method: 'GET',
+              headers: {
+                'Accept': 'application/json',
+              }
+            });
+            
+            if (response.ok) {
+              const data = await response.json();
+              if (data.country === 'IL') {
+                setLanguage('he');
+              }
+            }
+          } catch (apiError) {
+            console.log('Using browser settings for language detection');
+            // במקרה של כישלון, השאר את ברירת המחדל או השתמש בהגדרות הדפדפן
+          }
         }
       } catch (error) {
         console.error('Error detecting location:', error);
+        // במקרה של שגיאה, השתמש בשפת הדפדפן כדי להחליט
+        const browserLang = navigator.language || (navigator as any).userLanguage;
+        if (browserLang.startsWith('he') || browserLang.startsWith('iw')) {
+          setLanguage('he');
+        }
       }
     };
 
