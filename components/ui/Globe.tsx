@@ -159,7 +159,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       _buildData();
       _buildMaterial();
     }
-  }, [globeRef.current, _buildData, _buildMaterial]);
+  }, [_buildData, _buildMaterial]);
 
   const startAnimation = useCallback(() => {
     if (!globeRef.current || !globeData) return;
@@ -265,7 +265,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     return () => {
       clearInterval(interval);
     };
-  }, [globeRef.current, globeData, data.length]);
+  }, [globeData, data.length]);
 
   return (
     <>

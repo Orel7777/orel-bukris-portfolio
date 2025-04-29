@@ -1,7 +1,7 @@
 import * as React from "react";
 import { cn } from "@/utils/cn";
 import BackToHomeButton from "./BackToHomeButton";
-import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 interface HeroSectionProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
@@ -66,14 +66,6 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
   (
     {
       className,
-      title = "Build products for everyone",
-      subtitle = {
-        regular: "Designing your projects faster with ",
-        gradient: "the largest figma UI kit.",
-      },
-      description = "Sed ut perspiciatis unde omnis iste natus voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.",
-      ctaText = "Browse courses",
-      ctaHref = "#",
       bottomImage = {
         light: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
         dark: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80",
@@ -101,8 +93,10 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
             </div>
             {bottomImage && (
               <div className="mt-32 mx-10 relative z-10">
-                <img
+                <Image
                   src={bottomImage.light}
+                  width={1200}
+                  height={675}
                   className="w-full shadow-lg rounded-lg border border-gray-200 dark:hidden"
                   alt="Dashboard preview"
                 />

@@ -3,9 +3,41 @@ import { HeroSection } from "@/components/ui/FullPortfolioHeroSection";
 import { useLanguage } from "@/app/providers/language-provider";
 import FullPortfolioProjects from "@/components/FullPortfolioProjects";
 import { PortfolioTitle } from "@/components/ui/demo";
+import { useEffect, useState } from "react";
+import dynamic from 'next/dynamic';
+
+// טעינה דינמית של רכיב הטעינה כדי למנוע בעיות עם framer-motion
+const Loader = dynamic(() => import('@/components/ui/Loader'), { ssr: false });
 
 export default function FullPortfolioPage() {
   const { t } = useLanguage();
+  const [isLoading, setIsLoading] = useState(true);
+  const [isContentReady, setIsContentReady] = useState(false);
+
+  // לוודא שהרינדור מתרחש רק בצד הלקוח
+  useEffect(() => {
+    setIsContentReady(true);
+    
+    // שימוש בפרק זמן ארוך יותר לטעינה למניעת בעיות עם אנימציות
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  // אם התוכן לא מוכן עדיין (למניעת רינדור בצד השרת), נציג דף ריק
+  if (!isContentReady) {
+    return null;
+  }
+
+  // שלב הטעינה
+  if (isLoading) {
+    return <div className="w-screen h-screen flex items-center justify-center">
+      <Loader />
+    </div>;
+  }
+
   return (
     <>
       <div className="w-full">
