@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
 import styled from 'styled-components';
 import { useLanguage } from '@/app/providers/language-provider';
 import { useRouter } from 'next/navigation';

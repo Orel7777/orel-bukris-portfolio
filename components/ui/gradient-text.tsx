@@ -14,7 +14,6 @@ interface GradientTextProps
 function GradientText({
   className,
   children,
-  as = "span",
   ...props
 }: GradientTextProps) {
   return (
