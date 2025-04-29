@@ -22,7 +22,6 @@ const nextConfig = {
       },
     ],
   },
-  distDir: 'build',
   reactStrictMode: false,
   poweredByHeader: false,
   async headers() {
