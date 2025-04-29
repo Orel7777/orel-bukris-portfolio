@@ -7,6 +7,7 @@ import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
 import RecentProjects from "@/components/RecentProjects";
 import { FloatingNav } from "@/components/ui/FloatingNav";
+// import { GradientTextDemo } from "@/components/ui/gradient-text-demo";
 // import { navItems } from "@/data";
 
 export default function Home() {

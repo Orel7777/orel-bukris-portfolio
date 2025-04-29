@@ -210,6 +210,7 @@ const Footer: React.FC = () => {
                 width={24}
                 height={24}
                 className="group-hover:scale-75 transition-all duration-200"
+                style={{ height: "auto" }}
               />
             </a>
           ))}

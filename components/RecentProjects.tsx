@@ -5,6 +5,7 @@ import { FaLocationArrow } from "react-icons/fa";
 import { useLanguage } from "@/app/providers/language-provider";
 import Image from "next/image";
 import VerificationDialog from "./ui/VerificationDialog";
+import PortfolioFullButton from "./ui/PortfolioFullButton";
 
 interface ProjectItem {
   id: number;
@@ -60,7 +61,6 @@ const RecentProjects = () => {
       iconLists: ["/re.svg", "/tail.svg"],
       link: "https://limor-mimon-4h3u.vercel.app/"
     },
-
     {
       id: 5,
       title: t("projects.nameProject3"),
@@ -70,22 +70,6 @@ const RecentProjects = () => {
       link: "https://island-portfolio-mwv4.vercel.app/",
     },
     {
-      id: 6,
-      title: t("projects.nameProject4"),
-      des: t("projects.description4"),
-      img: "/3Dex.png",
-      iconLists: ["/re.svg", "/tail.svg"],
-      link: "https://3-d-example1-orel-bukris.vercel.app/",
-    },
-    {
-      id: 7,
-      title: t("projects.nameProject5"),
-      des: t("projects.description5"),
-      img: "/iphone.png",
-      iconLists: ["/re.svg", "/tail.svg"],
-      link: "https://apple-website-example-beryl.vercel.app/",
-    },
-    {
       id: 8,
       title: t("projects.nameProject6"),
       des: t("projects.description6"),
@@ -93,7 +77,6 @@ const RecentProjects = () => {
       iconLists: ["/re.svg", "/tail.svg"],
       link: "https://shirt-craft-3-d.vercel.app/",
     },
-
   ];
 
   const handleProjectClick = (e: React.MouseEvent, project: ProjectItem) => {
@@ -117,11 +100,10 @@ const RecentProjects = () => {
 
   return (
     <div className="py-20 px-4 md:px-8 lg:px-16" id="projects">
-      <h1 className="heading text-center mb-14">
-        {t("projects.title")}{" "}
-        <span className="text-purple">{t("projects.viewProject")}</span>
-      </h1>
-      
+
+      <div className="flex justify-center mb-8">
+        <PortfolioFullButton />
+      </div>
       <div className="flex flex-wrap justify-center gap-24 md:gap-20 lg:gap-24 max-w-[1600px] mx-auto">
         {isClient &&
           projects.map((item) => {
@@ -146,6 +128,7 @@ const RecentProjects = () => {
                           className="absolute inset-0 w-full h-full object-cover opacity-40"
                           width={500}
                           height={250}
+                          style={{ height: "auto" }}
                         />
                         <Image
                           src={item.img}
@@ -154,6 +137,7 @@ const RecentProjects = () => {
                           width={500}
                           height={250}
                           priority={item.id === 1}
+                          style={{ height: "auto" }}
                         />
                       </div>
                       <div className={`p-6 flex-grow flex flex-col ${item.id === 9 ? 'pt-2' : ''}`}>
@@ -183,6 +167,7 @@ const RecentProjects = () => {
                                   className="p-2"
                                   width={40}
                                   height={40}
+                                  style={{ height: "auto" }}
                                 />
                               </div>
                             ))}
@@ -204,7 +189,9 @@ const RecentProjects = () => {
                   
                   <div className="absolute inset-0 backface-hidden rounded-2xl bg-gradient-to-b from-purple/10 to-[#13162D] rotate-y-180 border border-purple/30 flex items-center justify-center p-8">
                     <div className="text-center">
-                      <h3 className="text-xl text-white font-bold mb-4">{item.title}</h3>
+                      <h2 className="text-4xl tracking-tighter font-geist bg-clip-text text-transparent mx-auto md:text-6xl bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
+        {t('projects.title')}
+      </h2>
                       <p className="text-[#BEC1DD] mb-6">{item.des}</p>
                       <div className="inline-block bg-purple/20 backdrop-blur-sm px-4 py-2 rounded-full text-white font-medium">
                         {t("projects.check")}

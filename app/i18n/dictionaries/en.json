@@ -3,7 +3,8 @@
     "home": "Home",
     "projects": "Projects",
     "experience": "Experience",
-    "contact": "Contact"
+    "contact": "Contact",
+    "backToSite": "Back to Home"
   },
   "hero": {
     "title": "3D Development that combines innovative design with interactive, living, and Breathing Experiences",
@@ -32,7 +33,8 @@
     "description": "Transform your UI with immersive 3D scenes that captivate audiences and elevate designs."
   },
   "projects": {
-    "title": "A peek at some of my",
+    "portfolioFull": "Full Portfolio",
+    "title": "Full Portfolio",
     "viewProject": "recent projects",
     "nameProject8": "Dikla Maduela - Women's Massage",
     "nameProject7": "Lihan Biton - RE/MAX Real Estate Agent",
