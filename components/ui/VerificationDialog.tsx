@@ -59,7 +59,7 @@ const CardActions = styled.div`
   gap: 1.5rem;
 `;
 
-const Button = styled.button<{ primary?: boolean }>`
+const Button = styled.button.withConfig({ shouldForwardProp: (prop) => prop !== 'primary' })<{ primary?: boolean }>`
   display: inline-flex;
   padding: 0.75rem 1.5rem;
   font-size: 1.125rem;
