@@ -54,10 +54,10 @@ export function PortfolioTitle() {
   const { t } = useLanguage();
   
   return (
-    <div className="w-full py-12 text-center">
+    <div className="w-full py-6 text-center">
       <h1 className="text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl">
         <GradientText>{t('projects.portfolioFull')}</GradientText>
       </h1>
     </div>
   );
-} 
+}

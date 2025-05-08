@@ -8,6 +8,7 @@ import dynamic from 'next/dynamic';
 
 // טעינה דינמית של רכיב הטעינה כדי למנוע בעיות עם framer-motion
 const Loader = dynamic(() => import('@/components/ui/Loader'), { ssr: false });
+const CircleLoader = dynamic(() => import('@/components/ui/CircleLoader'), { ssr: false });
 
 export default function FullPortfolioPage() {
   const { t } = useLanguage();
@@ -40,30 +41,35 @@ export default function FullPortfolioPage() {
 
   return (
     <>
-      <div className="w-full">
+      <div className="w-full flex flex-col items-center">
         <PortfolioTitle />
+        <div className="relative h-[300px] w-full mt-16">
+          <CircleLoader />
+        </div>
       </div>
-      <HeroSection
-        title={t("projects.portfolioFull")}
-        subtitle={{
-          regular: t("projects.title"),
-          gradient: t("projects.viewProject"),
-        }}
-        description={t("projects.descriptionFull")}
-        ctaText={t("footer.contact")}
-        ctaHref="/contact"
-        bottomImage={{
-          light: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-          dark: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80",
-        }}
-        gridOptions={{
-          angle: 65,
-          opacity: 0.4,
-          cellSize: 50,
-          lightLineColor: "#4a4a4a",
-          darkLineColor: "#2a2a2a",
-        }}
-      />
+      <div className="mt-8">
+        <HeroSection
+          title={t("projects.portfolioFull")}
+          subtitle={{
+            regular: t("projects.title"),
+            gradient: t("projects.viewProject"),
+          }}
+          description={t("projects.descriptionFull")}
+          ctaText={t("footer.contact")}
+          ctaHref="/contact"
+          bottomImage={{
+            light: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+            dark: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80",
+          }}
+          gridOptions={{
+            angle: 65,
+            opacity: 0.4,
+            cellSize: 50,
+            lightLineColor: "#4a4a4a",
+            darkLineColor: "#2a2a2a",
+          }}
+        />
+      </div>
       <FullPortfolioProjects />
     </>
   );

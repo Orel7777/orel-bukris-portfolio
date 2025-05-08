@@ -109,7 +109,7 @@ export default function FullPortfolioProjects() {
   };
 
   return (
-    <section className="w-full py-24 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-purple-950/90 to-black/90">
+    <section className="w-full py-12 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-purple-950/90 to-black/90">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-wrap justify-center gap-12">
           {allProjects.map((item) => (

@@ -100,7 +100,6 @@ const RecentProjects = () => {
 
   return (
     <div className="py-20 px-4 md:px-8 lg:px-16" id="projects">
-
       <div className="flex justify-center mb-8">
         <PortfolioFullButton />
       </div>
