@@ -21,7 +21,8 @@ const RecentProjects = () => {
   const [isClient, setIsClient] = useState(false);
   const { t } = useLanguage();
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [selectedProject, setSelectedProject] =
+    useState<ProjectItem | null>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -35,7 +36,7 @@ const RecentProjects = () => {
       img: "/dikla_maduela_1.png",
       iconLists: ["/re.svg", "/tail.svg", "/ts.svg"],
       link: "https://dikla-massage.co.il/",
-      requireFemaleVerification: true
+      requireFemaleVerification: true,
     },
     {
       id: 2,
@@ -59,7 +60,7 @@ const RecentProjects = () => {
       des: t("projects.description9"),
       img: "/limor_mimon.png",
       iconLists: ["/re.svg", "/tail.svg"],
-      link: "https://limor-mimon-4h3u.vercel.app/"
+      link: "https://limor-mimon-4h3u.vercel.app/",
     },
     {
       id: 5,
@@ -79,7 +80,10 @@ const RecentProjects = () => {
     },
   ];
 
-  const handleProjectClick = (e: React.MouseEvent, project: ProjectItem) => {
+  const handleProjectClick = (
+    e: React.MouseEvent,
+    project: ProjectItem
+  ) => {
     if (project.requireFemaleVerification) {
       e.preventDefault();
       setSelectedProject(project);
@@ -89,7 +93,7 @@ const RecentProjects = () => {
 
   const handleConfirmDialog = () => {
     if (selectedProject && selectedProject.link) {
-      window.open(selectedProject.link, '_blank');
+      window.open(selectedProject.link, "_blank");
     }
     setDialogOpen(false);
   };
@@ -109,15 +113,23 @@ const RecentProjects = () => {
             return (
               <div
                 className="project-card w-full md:w-[450px] lg:w-[500px] h-[540px] perspective"
-                key={item.id}
-              >
+                key={item.id}>
                 <a
                   href={item.requireFemaleVerification ? "#" : item.link}
-                  onClick={item.requireFemaleVerification ? (e) => handleProjectClick(e, item) : undefined}
-                  target={item.requireFemaleVerification ? undefined : "_blank"}
-                  rel={item.requireFemaleVerification ? undefined : "noopener noreferrer"}
-                  className="relative group block w-full h-full transform-gpu transition-all duration-700 preserve-3d hover:rotate-y-12"
-                >
+                  onClick={
+                    item.requireFemaleVerification
+                      ? (e) => handleProjectClick(e, item)
+                      : undefined
+                  }
+                  target={
+                    item.requireFemaleVerification ? undefined : "_blank"
+                  }
+                  rel={
+                    item.requireFemaleVerification
+                      ? undefined
+                      : "noopener noreferrer"
+                  }
+                  className="relative group block w-full h-full transform-gpu transition-all duration-700 preserve-3d hover:rotate-y-12">
                   <div className="absolute inset-0 backface-hidden rounded-2xl bg-[#13162D] shadow-custom overflow-hidden border border-purple/20 z-10">
                     <div className="flex flex-col h-full">
                       <div className="relative w-full h-[180px] md:h-[250px] overflow-hidden">
@@ -132,22 +144,39 @@ const RecentProjects = () => {
                         <Image
                           src={item.img}
                           alt={`${item.title} cover`}
-                          className={`absolute inset-0 w-full h-full ${item.id === 9 ? 'object-contain bg-white' : 'object-cover md:object-contain p-2'} group-hover:scale-105 transition-transform duration-700`}
+                          className={`absolute inset-0 w-full h-full ${
+                            item.id === 9
+                              ? "object-contain bg-white"
+                              : "object-cover md:object-contain p-2"
+                          } group-hover:scale-105 transition-transform duration-700`}
                           width={500}
                           height={250}
                           priority={item.id === 1}
                           style={{ height: "auto" }}
                         />
                       </div>
-                      <div className={`p-6 flex-grow flex flex-col ${item.id === 9 ? 'pt-2' : ''}`}>
+                      <div
+                        className={`p-6 flex-grow flex flex-col ${
+                          item.id === 9 ? "pt-2" : ""
+                        }`}>
                         <h2
-                          className={`font-bold text-white mb-2 group-hover:text-purple transition-colors duration-300 ${item.id === 9 ? 'text-xl md:text-2xl' : item.id === 5 ? 'text-xl md:text-2xl' : 'text-2xl'}`}
-                        >
+                          className={`font-bold text-white mb-2 group-hover:text-purple transition-colors duration-300 ${
+                            item.id === 9
+                              ? "text-xl md:text-2xl"
+                              : item.id === 5
+                              ? "text-xl md:text-2xl"
+                              : "text-2xl"
+                          }`}>
                           {item.title}
                         </h2>
                         <p
-                          className={`text-[#BEC1DD] font-light mb-auto ${item.id === 9 ? 'text-sm md:text-lg max-h-20 overflow-hidden line-clamp-3' : item.id === 5 ? 'text-base md:text-lg' : 'text-lg'}`}
-                        >
+                          className={`text-[#BEC1DD] font-light mb-auto ${
+                            item.id === 9
+                              ? "text-sm md:text-lg max-h-20 overflow-hidden line-clamp-3"
+                              : item.id === 5
+                              ? "text-base md:text-lg"
+                              : "text-lg"
+                          }`}>
                           {item.des}
                         </p>
                         <div className="flex items-center justify-between mt-8">
@@ -158,8 +187,7 @@ const RecentProjects = () => {
                                 className="border border-white/20 rounded-full bg-black/40 backdrop-blur-sm w-10 h-10 flex justify-center items-center -mr-2 group-hover:translate-y-[-5px] transition-transform duration-300"
                                 style={{
                                   transitionDelay: `${index * 50}ms`,
-                                }}
-                              >
+                                }}>
                                 <Image
                                   src={icon}
                                   alt={`technology-${index + 1}`}
@@ -185,12 +213,12 @@ const RecentProjects = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="absolute inset-0 backface-hidden rounded-2xl bg-gradient-to-b from-purple/10 to-[#13162D] rotate-y-180 border border-purple/30 flex items-center justify-center p-8">
                     <div className="text-center">
                       <h2 className="text-4xl tracking-tighter font-geist bg-clip-text text-transparent mx-auto md:text-6xl bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
-        {t('projects.title')}
-      </h2>
+                        {t("projects.title")}
+                      </h2>
                       <p className="text-[#BEC1DD] mb-6">{item.des}</p>
                       <div className="inline-block bg-purple/20 backdrop-blur-sm px-4 py-2 rounded-full text-white font-medium">
                         {t("projects.check")}

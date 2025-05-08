@@ -3,11 +3,7 @@ import Link from "next/link";
 import { useLanguage } from "@/app/providers/language-provider";
 import styled from 'styled-components';
 
-interface BackToHomeButtonProps {
-  className?: string;
-}
-
-const BackToHomeButton = ({ className }: BackToHomeButtonProps) => {
+const BackToHomeButton = () => {
   const { t } = useLanguage();
   
   return (

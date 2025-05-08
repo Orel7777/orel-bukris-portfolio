@@ -1,8 +1,6 @@
 import * as React from "react";
 import { cn } from "@/utils/cn";
 import BackToHomeButton from "./BackToHomeButton";
-import CircleLoader from "./CircleLoader";
-import Image from "next/image";
 
 interface HeroSectionProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
@@ -13,10 +11,6 @@ interface HeroSectionProps extends React.HTMLAttributes<HTMLDivElement> {
   description?: string;
   ctaText?: string;
   ctaHref?: string;
-  bottomImage?: {
-    light: string;
-    dark: string;
-  };
   gridOptions?: {
     angle?: number;
     cellSize?: number;
@@ -53,8 +47,7 @@ const RetroGrid = ({
         "pointer-events-none absolute size-full overflow-hidden [perspective:200px]",
         `opacity-[var(--opacity)]`
       )}
-      style={gridStyles}
-    >
+      style={gridStyles}>
       <div className="absolute inset-0 [transform:rotateX(var(--grid-angle))]">
         <div className="animate-grid [background-image:linear-gradient(to_right,var(--light-line)_1px,transparent_0),linear-gradient(to_bottom,var(--light-line)_1px,transparent_0)] [background-repeat:repeat] [background-size:var(--cell-size)_var(--cell-size)] [height:300vh] [inset:0%_0px] [margin-left:-200%] [transform-origin:100%_0_0] [width:600vw] dark:[background-image:linear-gradient(to_right,var(--dark-line)_1px,transparent_0),linear-gradient(to_bottom,var(--dark-line)_1px,transparent_0)]" />
       </div>
@@ -67,10 +60,6 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
   (
     {
       className,
-      bottomImage = {
-        light: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-        dark: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80",
-      },
       gridOptions,
       ...props
     },
