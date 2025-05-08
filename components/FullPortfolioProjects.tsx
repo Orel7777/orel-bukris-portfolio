@@ -97,14 +97,6 @@ export default function FullPortfolioProjects() {
   // איחוד כל הפרויקטים
   const allProjects = [...existingProjects, ...additionalProjects];
 
-  const handleProjectClick = (e: React.MouseEvent, project: ProjectItem) => {
-    if (project.requireFemaleVerification) {
-      e.preventDefault();
-      setSelectedProject(project);
-      setDialogOpen(true);
-    }
-  };
-
   const handleConfirmDialog = () => {
     if (selectedProject && selectedProject.link) {
       window.open(selectedProject.link, '_blank');
@@ -119,12 +111,21 @@ export default function FullPortfolioProjects() {
   return (
     <section className="w-full py-24 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-purple-950/90 to-black/90">
       <div className="max-w-7xl mx-auto">
-
         <div className="flex flex-wrap justify-center gap-12">
           {allProjects.map((item) => (
-            <div
+            <a
               key={item.id}
-              className="project-card w-full md:w-[420px] lg:w-[480px] h-[540px] bg-[#181A2D] rounded-3xl shadow-2xl border border-purple-900/30 overflow-hidden flex flex-col hover:scale-105 transition-transform duration-500"
+              href={item.requireFemaleVerification ? "#" : item.link}
+              onClick={(e) => {
+                if (item.requireFemaleVerification) {
+                  e.preventDefault();
+                  setSelectedProject(item);
+                  setDialogOpen(true);
+                }
+              }}
+              target={item.requireFemaleVerification ? undefined : "_blank"}
+              rel="noopener noreferrer"
+              className="project-card w-full md:w-[420px] lg:w-[480px] h-[540px] bg-[#181A2D] rounded-3xl shadow-2xl border border-purple-900/30 overflow-hidden flex flex-col hover:scale-105 transition-transform duration-500 cursor-pointer"
             >
               <div className="relative w-full h-[180px] md:h-[250px] overflow-hidden">
                 <Image
@@ -151,21 +152,15 @@ export default function FullPortfolioProjects() {
                   ))}
                 </div>
                 <div className="flex items-center justify-center mt-6">
-                  <a
-                    href={item.requireFemaleVerification ? "#" : item.link}
-                    onClick={item.requireFemaleVerification ? (e) => handleProjectClick(e, item) : undefined}
-                    target={item.requireFemaleVerification ? undefined : "_blank"}
-                    rel="noopener noreferrer"
-                    className="flex items-center bg-purple-700/80 hover:bg-purple-600 transition-all px-6 py-2 rounded-full text-white font-medium shadow-lg gap-2"
-                  >
+                  <span className="flex items-center bg-purple-700/80 hover:bg-purple-600 transition-all px-6 py-2 rounded-full text-white font-medium shadow-lg gap-2">
                     {item.requireFemaleVerification ? t("projects.checkFemale") : t("projects.check")}
                     <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 20 20" className="w-5 h-5 ml-2" xmlns="http://www.w3.org/2000/svg">
                       <path d="M12.293 3.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l8-8z"></path>
                     </svg>
-                  </a>
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
