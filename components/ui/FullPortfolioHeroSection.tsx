@@ -65,6 +65,12 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
     {
       className,
       gridOptions,
+      title,
+      subtitle,
+      description,
+      ctaText,
+      ctaHref,
+      bottomImage,
       ...props
     },
     ref

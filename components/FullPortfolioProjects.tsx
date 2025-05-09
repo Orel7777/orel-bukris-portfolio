@@ -132,6 +132,7 @@ export default function FullPortfolioProjects() {
                   src={item.img}
                   alt={item.titleKey ? t(item.titleKey) : item.title || ""}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover md:object-contain p-2 group-hover:scale-105 transition-transform duration-700"
                   style={{ zIndex: 1 }}
                 />

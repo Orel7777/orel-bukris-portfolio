@@ -49,12 +49,10 @@ export default function FullPortfolioPage() {
       </div>
       <div className="mt-8">
         <HeroSection
-          title={t("projects.portfolioFull")}
           subtitle={{
             regular: t("projects.title"),
             gradient: t("projects.viewProject"),
           }}
-          description={t("projects.descriptionFull")}
           ctaText={t("footer.contact")}
           ctaHref="/contact"
           bottomImage={{
