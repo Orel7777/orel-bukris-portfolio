@@ -1,4 +1,4 @@
-"use client";
+0"use client";
 import React, { useState } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/app/providers/language-provider";
