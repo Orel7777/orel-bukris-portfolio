@@ -220,27 +220,6 @@
                 0 20px 60px -10px rgba(102, 45, 145, 0.2);
   }
   
-  /* Loader for Spline Scene */
-  .loader {
-    width: 48px;
-    height: 48px;
-    border: 5px solid #FFF;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-  }
-
-  @keyframes rotation {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
   @keyframes gradient-1 {
     0%, 100% { transform: translateX(-70%) translateY(-70%) scale(1); }
     50% { transform: translateX(-30%) translateY(-30%) scale(1.2); }

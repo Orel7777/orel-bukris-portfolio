@@ -10,12 +10,6 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'prod.spline.design',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
         hostname: 'images.unsplash.com',
         port: '',
         pathname: '/**',
@@ -31,7 +25,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://prod.spline.design;"
+            value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com;"
           }
         ],
       },
