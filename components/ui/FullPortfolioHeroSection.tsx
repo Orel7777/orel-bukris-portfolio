@@ -10,8 +10,6 @@ interface HeroSectionProps extends React.HTMLAttributes<HTMLDivElement> {
     gradient: string;
   };
   description?: string;
-  ctaText?: string;
-  ctaHref?: string;
   bottomImage?: {
     light: string;
     dark: string;
@@ -71,6 +69,9 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
         dark: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80",
       },
       gridOptions,
+      title,
+      subtitle,
+      description,
       ...props
     },
     ref

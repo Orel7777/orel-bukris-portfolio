@@ -5,6 +5,7 @@ import { useLanguage } from '@/app/providers/language-provider';
 export const LanguageToggle = () => {
   const { language, toggleLanguage } = useLanguage();
   
+  // Always render the toggle button for consistent UI
   return (
     <button
       onClick={toggleLanguage}
@@ -12,6 +13,7 @@ export const LanguageToggle = () => {
       rounded-full text-white hover:bg-white/20 transition-all z-50
       dark:bg-black/10 dark:text-white dark:hover:bg-black/20
       sm:top-4"
+      dir="ltr" // Add dir="ltr" to ensure correct text direction
     >
       {language === 'en' ? 'עברית' : 'English'}
     </button>
